@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookies Policy – SlotFrenzy</title>
+<meta name="description" content="Learn about SlotFrenzy’s use of cookies to improve user experience, remember preferences, and keep the site secure.">
+<meta name="keywords" content="SlotFrenzy cookies, cookies policy, data tracking, online slots cookies, user preferences, virtual casino cookies">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://slotfrenzy.org/cookies">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-gray-300">
+
+<!-- Navbar -->
+<header class="sticky top-0 bg-black z-50 shadow-md navbar-gradient-border">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="../assets/images/slotfrenzy-logo.png" alt="SlotFrenzy Logo" class="w-[95px] h-[75px] animate-pulse slotfrenzy-logo">
+    </a>
+    <nav class="hidden md:flex space-x-6 text-base h-16 items-center">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/games/" class="nav-link">Games</a>
+      <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+
+      <!-- Before login -->
+      <a id="loginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow hover:scale-105 transition">Login</a>
+
+      <!-- After login -->
+      <div id="userInfo" class="hidden flex items-center space-x-3">
+        <span id="welcomeText" class="text-gray-200 text-sm"></span>
+        <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      </div>
+    </nav>
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+
+  <div id="mobile-menu" class="hidden bg-black flex flex-col p-4 space-y-2 md:hidden">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/games/" class="nav-link">Games</a>
+    <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+
+    <!-- Before login -->
+    <a id="mobileLoginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow">Login</a>
+
+    <!-- After login -->
+    <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
+      <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
+      <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative py-20 text-center bg-gradient-to-b from-pink-500/20 via-black/60 to-black overflow-hidden">
+  <div class="absolute inset-0 bg-black/60"></div>
+  <canvas id="diceCanvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+  <div class="relative z-10">
+    <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 animate-pulse">Cookies Policy</h1>
+  </div>
+</section>
+
+<!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+    <section>
+      <p>
+        At SlotFrenzy.org, we use cookies and similar technologies to personalize your experience, enhance site performance, and understand how users interact with our social casino platform. Cookies are small text files stored on your device that help us remember your preferences and improve our service.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">Why we use cookies</h2>
+      <ul class="list-disc list-inside space-y-1">
+        <li><span class="text-gray-300">To remember your login session and keep you signed in securely.</span></li>
+        <li><span class="text-gray-300">To store your preferences, like game sound settings or theme choices.</span></li>
+        <li><span class="text-gray-300">To analyze site traffic and understand which games or features are most popular.</span></li>
+        <li><span class="text-gray-300">To display relevant promotions, bonuses, or announcements within the platform.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">Managing your cookies</h2>
+      <p>
+        By using SlotFrenzy, you agree to our use of cookies. You can choose to accept or decline cookies when you first visit our site. If you change your mind, most browsers allow you to clear cookies or adjust settings anytime. However, disabling certain cookies may limit your experience and prevent features like auto-login or saving gameplay progress.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">Your privacy</h2>
+      <p>
+        Cookies do not collect sensitive personal data like your name or email directly. For more about how we protect your information, please read our <a href="/privacy/" class="text-blue-400 hover:text-blue-300">Privacy Policy</a>.
+      </p>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-black py-6 text-center text-sm">
+  <p>&copy; 2025 SlotFrenzy.org. All rights reserved.</p>
+  <div class="space-x-2 mt-2">
+    <a href="/privacy/" class="hover:text-teal-400">Privacy Policy</a> | 
+    <a href="/terms/" class="hover:text-teal-400">Terms of Service</a> | 
+    <a href="/cookies/" class="hover:text-teal-400">Cookies Policy</a>
+  </div>
+  <p class="mt-2">Contact: <a href="mailto:info@slotfrenzy.org" class="text-teal-400">info@slotfrenzy.org</a></p>
+</footer>
+
+<!-- Cookie Consent Popup -->
+<div id="cookieConsent" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-md border border-pink-500/30 text-gray-200 px-4 py-3 rounded-xl shadow-md hidden z-50 max-w-md text-center animate-fade-in">
+  <p class="text-xs md:text-sm mb-2">
+    We use cookies to personalize your experience and improve our site. By clicking “Accept”, you agree to our 
+    <a href="/cookies/" class="text-blue-400 hover:text-blue-300 underline">Cookies Policy</a>.
+  </p>
+  <div class="flex justify-center gap-3">
+    <button onclick="acceptCookies()" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white px-3 py-1 rounded-full text-xs font-semibold shadow hover:scale-105 transition">Accept</button>
+    <button onclick="declineCookies()" class="border border-pink-500/40 text-xs px-3 py-1 rounded-full hover:scale-105 transition">Decline</button>
+  </div>
+</div>
+
+<!-- Age Modal -->
+<div id="ageModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+  <div class="bg-gray-900 p-6 rounded-lg text-center max-w-md w-full">
+    <h2 class="text-2xl mb-4">Age Verification</h2>
+    <p class="mb-6">You must be 18+ to enter SlotFrenzy. Are you over 18?</p>
+    <div class="flex justify-center gap-4">
+      <button id="acceptAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">Yes</button>
+      <button id="denyAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- Dice Canvas script -->
+<script src="../assets/js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('cookiesConsent')) {
+      document.getElementById('cookieConsent').classList.remove('hidden');
+    }
+  });
+  function acceptCookies() {
+    localStorage.setItem('cookiesConsent', 'accepted');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+  function declineCookies() {
+    localStorage.setItem('cookiesConsent', 'declined');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+</script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

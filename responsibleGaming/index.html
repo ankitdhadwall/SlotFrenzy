@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsible Gaming – SlotFrenzy</title>
+<meta name="description" content="At SlotFrenzy, we promote responsible gaming. Play for fun with virtual coins. Find out how we help protect players and encourage healthy gameplay.">
+<meta name="keywords" content="responsible gaming, play for fun, virtual coins, safe gaming, healthy gameplay, social casino safety, player protection, gaming responsibility, SlotFrenzy responsible play">
+<link rel="canonical" href="https://slotfrenzy.org/responsibleGaming">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+
+
+</style>
+</head>
+<body class="bg-black text-white relative overflow-x-hidden">
+
+<!-- Navbar -->
+<header class="sticky top-0 bg-black z-50 shadow-md navbar-gradient-border">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="../assets/images/slotfrenzy-logo.png" alt="SlotFrenzy Logo" class="w-[95px] h-[75px] animate-pulse slotfrenzy-logo">
+    </a>
+    <nav class="hidden md:flex space-x-6 text-base h-16 items-center">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/games/" class="nav-link">Games</a>
+      <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+
+      <!-- Before login -->
+      <a id="loginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow hover:scale-105 transition">Login</a>
+
+      <!-- After login -->
+      <div id="userInfo" class="hidden flex items-center space-x-3">
+        <span id="welcomeText" class="text-gray-200 text-sm"></span>
+        <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      </div>
+    </nav>
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+
+  <div id="mobile-menu" class="hidden bg-black flex flex-col p-4 space-y-2 md:hidden">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/games/" class="nav-link">Games</a>
+    <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+
+    <!-- Before login -->
+    <a id="mobileLoginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow">Login</a>
+
+    <!-- After login -->
+    <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
+      <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
+      <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero with dice canvas & live gradient text -->
+<section class="relative py-20 text-center bg-gradient-to-b from-pink-500/20 via-black/60 to-black overflow-hidden">
+  <canvas id="diceCanvas"></canvas>
+  <div class="relative">
+    <h1 class="text-4xl md:text-5xl font-bold animated-gradient-text mb-4">Responsible Gaming</h1>
+    <p class="text-gray-300 max-w-2xl mx-auto">SlotFrenzy is committed to providing a fun, social casino experience without real money gambling. Your safety and well-being are our top priorities.</p>
+  </div>
+</section>
+
+<!-- Content sections -->
+<section class="max-w-5xl mx-auto px-4 py-12 space-y-12">
+
+  <div class="glass-bg p-6 rounded-xl shadow">
+    <h2 class="text-2xl font-semibold animated-gradient-text mb-2">Our Commitment</h2>
+    <p class="text-gray-300">All games use virtual coins with no cash value. We do not offer real money gambling. Our goal is to help you enjoy responsibly.</p>
+  </div>
+
+  <div class="glass-bg p-6 rounded-xl shadow">
+    <h2 class="text-2xl font-semibold animated-gradient-text mb-2">Player Responsibility</h2>
+    <p class="text-gray-300">Play for fun, set time limits, and be aware of your habits. Gaming should always remain entertainment.</p>
+  </div>
+
+  <div class="glass-bg p-6 rounded-xl shadow">
+    <h2 class="text-2xl font-semibold animated-gradient-text mb-2">Tips for Healthy Play</h2>
+    <ul class="list-disc list-inside text-gray-300 space-y-1">
+      <li>Only play when relaxed</li>
+      <li>Take breaks often</li>
+      <li>Don’t chase losses</li>
+      <li>Track your time</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- Recognize the Warning Signs: full bg stretch -->
+<section class="relative py-20 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-pink-500/20 via-black/70 to-black"></div>
+  <div class="relative max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold animated-gradient-text mb-6">Recognize the Warning Signs</h2>
+    <p class="text-gray-300 max-w-2xl mx-auto mb-8">Watch for these signs that gaming may be becoming unhealthy.</p>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass-bg p-6 rounded-xl shadow hover:shadow-yellow-500/20 transition transform hover:scale-105">
+        <img loading="lazy" src="../assets/images/anxious.svg" alt="Feeling Anxious" class="w-12 h-12 mx-auto mb-3 hover:animate-pulse">
+        <h3 class="font-semibold text-lg mb-2">Feeling Anxious or Irritable</h3>
+        <p class="text-gray-400 text-sm">Feeling restless or using games to escape stress.</p>
+      </div>
+      <div class="glass-bg p-6 rounded-xl shadow hover:shadow-yellow-500/20 transition transform hover:scale-105">
+        <img loading="lazy" src="../assets/images/chasing-losses.png" alt="Chasing Losses" class="w-12 h-12 mx-auto mb-3 hover:animate-pulse">
+        <h3 class="font-semibold text-lg mb-2">Chasing Losses</h3>
+        <p class="text-gray-400 text-sm">Trying to win back coins by playing longer.</p>
+      </div>
+      <div class="glass-bg p-6 rounded-xl shadow hover:shadow-yellow-500/20 transition transform hover:scale-105">
+        <img loading="lazy" src="../assets/images/clock.svg" alt="Playing Longer" class="w-12 h-12 mx-auto mb-3 hover:animate-pulse">
+        <h3 class="font-semibold text-lg mb-2">Playing Longer than Planned</h3>
+        <p class="text-gray-400 text-sm">Losing track of time or staying up late.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-4 py-12 space-y-12">
+
+  <div class="glass-bg p-6 rounded-xl shadow">
+    <h2 class="text-2xl font-semibold animated-gradient-text mb-2">Tips for Managing Your Bankroll at SlotFrenzy</h2>
+    <p class="text-gray-300">Managing your bankroll effectively helps keep your SlotFrenzy experience fun and balanced. Here are some practical strategies to help you stay in control:</p>
+  </div>
+
+  <div class="glass-bg p-6 rounded-xl shadow">
+    <h3 class="text-xl font-semibold text-teal-400 mb-2">📌 Plan Your Budget and Time</h3>
+    <ul class="list-disc list-inside text-gray-300 space-y-1">
+      <li><strong>Set a Budget:</strong> Decide in advance how many virtual coins you’re comfortable using. Treat gaming as an entertainment expense.</li>
+      <li><strong>Allocate Your Time:</strong> Schedule dedicated play sessions to help balance gaming with other activities.</li>
+      <li><strong>Stick to Your Plan:</strong> Avoid exceeding your planned budget or time—even if you’re tempted to keep spinning.</li>
+    </ul>
+  </div>
+
+  <div class="glass-bg p-6 rounded-xl shadow">
+    <h3 class="text-xl font-semibold text-teal-400 mb-2">⚖️ Maintain a Balanced Lifestyle</h3>
+    <ul class="list-disc list-inside text-gray-300 space-y-1">
+      <li><strong>Diversify Your Activities:</strong> Enjoy other hobbies, creative projects, or sports alongside your SlotFrenzy playtime.</li>
+      <li><strong>Stay Socially Connected:</strong> Spend time with friends and family, participate in social events, and unplug offline. A balanced life supports healthy gaming habits.</li>
+    </ul>
+  </div>
+
+</section>
+
+
+<!-- Help & external support -->
+<section class="max-w-5xl mx-auto px-4 py-12">
+  <div class="glass-bg p-6 rounded-xl shadow text-center">
+    <h2 class="text-2xl font-semibold animated-gradient-text mb-3">Need Help?</h2>
+    <p class="text-gray-300 mb-4">If you need extra support, contact us or trusted organisations:</p>
+    <div class="flex flex-col md:flex-row justify-center gap-6 mb-4">
+      <a href="https://www.gamcare.org.uk/" target="_blank" class="flex items-center gap-3 bg-black px-4 py-3 rounded-xl border border-pink-500/30 hover:border-pink-500/60 shadow hover:shadow-pink-500/40 transition hover:scale-105">
+        <i class="fa-solid fa-shield-halved text-pink-500 text-2xl"></i>
+        <span class="text-gray-200 font-semibold">GamCare</span>
+      </a>
+      <a href="https://www.begambleaware.org/" target="_blank" class="flex items-center gap-3 bg-black px-4 py-3 rounded-xl border border-pink-500/30 hover:border-pink-500/60 shadow hover:shadow-pink-500/40 transition hover:scale-105">
+        <i class="fa-solid fa-heart text-teal-400 text-2xl"></i>
+        <span class="text-gray-200 font-semibold">GambleAware</span>
+      </a>
+    </div>
+    <a href="/contact/" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white px-5 py-2 rounded-full shadow hover:scale-105 transition">Contact Our Support Team</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black py-6 text-center text-sm">
+  <p>&copy; 2025 SlotFrenzy.org. All rights reserved.</p>
+  <div class="space-x-2 mt-2">
+    <a href="/privacy/" class="hover:text-teal-400">Privacy Policy</a> | 
+    <a href="/terms/" class="hover:text-teal-400">Terms of Service</a> | 
+    <a href="/cookies/" class="hover:text-teal-400">Cookies Policy</a>
+  </div>
+  <p class="mt-2">Contact: <a href="mailto:info@slotfrenzy.org" class="text-teal-400">info@slotfrenzy.org</a></p>
+</footer>
+
+<!-- Cookie Consent Popup -->
+<div id="cookieConsent" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-md border border-pink-500/30 text-gray-200 px-4 py-3 rounded-xl shadow-md hidden z-50 max-w-md text-center animate-fade-in">
+  <p class="text-xs md:text-sm mb-2">
+    We use cookies to personalize your experience and improve our site. By clicking “Accept”, you agree to our 
+    <a href="/cookies/" class="text-blue-400 hover:text-blue-300 underline">Cookies Policy</a>.
+  </p>
+  <div class="flex justify-center gap-3">
+    <button onclick="acceptCookies()" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white px-3 py-1 rounded-full text-xs font-semibold shadow hover:scale-105 transition">Accept</button>
+    <button onclick="declineCookies()" class="border border-pink-500/40 text-xs px-3 py-1 rounded-full hover:scale-105 transition">Decline</button>
+  </div>
+</div>
+
+<!-- Age Modal -->
+<div id="ageModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+  <div class="bg-gray-900 p-6 rounded-lg text-center max-w-md w-full">
+    <h2 class="text-2xl mb-4">Age Verification</h2>
+    <p class="mb-6">You must be 18+ to enter SlotFrenzy. Are you over 18?</p>
+    <div class="flex justify-center gap-4">
+      <button id="acceptAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">Yes</button>
+      <button id="denyAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+
+<script>
+function toggleMenu(){
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('hidden');
+  menu.classList.toggle('flex');
+}
+
+// Simple dice particle effect
+const canvas = document.getElementById('diceCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = document.querySelector('section').offsetHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Create particles
+for(let i=0;i<50;i++){
+  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:Math.random()-0.5, dy:Math.random()-0.5});
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.fillStyle='rgba(255,255,255,0.5)';
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.x+=p.dx; p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width) p.dx=-p.dx;
+    if(p.y<0||p.y>canvas.height) p.dy=-p.dy;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('cookiesConsent')) {
+      document.getElementById('cookieConsent').classList.remove('hidden');
+    }
+  });
+  function acceptCookies() {
+    localStorage.setItem('cookiesConsent', 'accepted');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+  function declineCookies() {
+    localStorage.setItem('cookiesConsent', 'declined');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+</script>
+
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>

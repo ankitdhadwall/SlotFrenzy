@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service – SlotFrenzy</title>
+<meta name="description" content="Read SlotFrenzy’s Terms of Service to understand the rules, user responsibilities, and acceptable use for our social casino platform.">
+<meta name="keywords" content="SlotFrenzy terms, social casino terms, online slots rules, user agreement, virtual casino terms, free slots terms">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://slotfrenzy.org/terms">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-gray-300">
+
+<!-- Navbar -->
+<header class="sticky top-0 bg-black z-50 shadow-md navbar-gradient-border">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="../assets/images/slotfrenzy-logo.png" alt="SlotFrenzy Logo" class="w-[95px] h-[75px] animate-pulse slotfrenzy-logo">
+    </a>
+    <nav class="hidden md:flex space-x-6 text-base h-16 items-center">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/games/" class="nav-link">Games</a>
+      <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+
+      <!-- Before login -->
+      <a id="loginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow hover:scale-105 transition">Login</a>
+
+      <!-- After login -->
+      <div id="userInfo" class="hidden flex items-center space-x-3">
+        <span id="welcomeText" class="text-gray-200 text-sm"></span>
+        <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      </div>
+    </nav>
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+
+  <div id="mobile-menu" class="hidden bg-black flex flex-col p-4 space-y-2 md:hidden">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/games/" class="nav-link">Games</a>
+    <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+
+    <!-- Before login -->
+    <a id="mobileLoginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow">Login</a>
+
+    <!-- After login -->
+    <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
+      <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
+      <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative py-20 text-center bg-gradient-to-b from-pink-500/20 via-black/60 to-black overflow-hidden">
+  <div class="absolute inset-0 bg-black/60"></div>
+  <canvas id="diceCanvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+  <div class="relative z-10">
+    <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 animate-pulse">Terms of Service</h1>
+    <p class="text-gray-300 max-w-4xl mx-auto mt-5">By accessing SlotFrenzy.org, you agree to comply with these Terms of Service. SlotFrenzy is a social casino platform created for entertainment, using virtual coins without any real-money gambling.</p>
+  </div>
+</section>
+
+<!-- Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">1. Introduction</h2>
+      <p>
+        Welcome to SlotFrenzy.org (“SlotFrenzy”, “we”, “our”, or “us”). These Terms of Service (“Terms”) govern your access and use of our website, mobile site, applications, and any other related services (collectively, the “Service”). SlotFrenzy is a social casino platform offering virtual slot games purely for entertainment with no real money gambling.
+      </p>
+      <p>
+        By accessing or using our Service, you confirm that you are at least 18 years old (or the legal age in your jurisdiction) and agree to comply with these Terms. If you do not agree, please do not use SlotFrenzy.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">2. Nature of Our Service</h2>
+      <p>
+        SlotFrenzy offers digital, virtual slot games where players use virtual coins instead of real money. The Service is intended solely for entertainment. Coins, badges, and other in-game items do not have real-world cash value, cannot be transferred to others, and cannot be redeemed for money or prizes.
+      </p>
+      <p>
+        All game outcomes are determined by random algorithms or other logic and are not influenced by player behavior or previous results.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">3. User Accounts</h2>
+      <p>
+        To use certain features, you must create an account by providing accurate, current, and complete information. You agree to update your account details promptly if they change.
+      </p>
+      <p>
+        You are responsible for maintaining the confidentiality of your login credentials and for any activity under your account. Please notify us immediately if you suspect unauthorized use.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">4. Virtual Coins and Bonuses</h2>
+      <p>
+        Upon registration, we may offer a limited amount of free virtual coins (e.g., 5,000 coins). Additional coins can be earned through gameplay, daily bonuses, achievements, or special promotions. These coins are purely virtual and hold no real monetary value.
+      </p>
+      <p>
+        SlotFrenzy may adjust coin balances, bonuses, or remove inactive accounts at its sole discretion to maintain fairness and platform integrity.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">5. Acceptable Use</h2>
+      <p>
+        You agree not to misuse SlotFrenzy. Prohibited activities include (but are not limited to): attempting to hack, exploit, or disrupt the platform; using automated scripts or bots to manipulate gameplay; sharing offensive content; or impersonating others.
+      </p>
+      <p>
+        Violation of these rules may lead to suspension or termination of your account without prior notice.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">6. Intellectual Property</h2>
+      <p>
+        All trademarks, logos, designs, images, texts, and software on SlotFrenzy are owned by us or our licensors. You may not copy, distribute, modify, or create derivative works based on our content without prior written consent.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">7. Limitation of Liability</h2>
+      <p>
+        SlotFrenzy is provided on an “as is” and “as available” basis. We do not guarantee the Service will be uninterrupted, error-free, or secure. To the fullest extent permitted by law, SlotFrenzy and its affiliates disclaim all liability for any indirect, incidental, or consequential damages arising out of your use of the Service.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">8. Changes to the Terms</h2>
+      <p>
+        We may update these Terms from time to time. The updated version will be posted on our site with a new effective date. By continuing to use SlotFrenzy after changes become effective, you accept the revised Terms.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">9. Termination</h2>
+      <p>
+        We reserve the right to suspend or terminate your account at any time, with or without notice, if we believe you violated these Terms or if your behavior could harm SlotFrenzy or other players.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold text-pink-400 mb-2">10. Contact Us</h2>
+      <p>
+        If you have questions about these Terms, please contact us at 
+        <a href="mailto:info@slotfrenzy.org" class="text-blue-400 hover:text-blue-300">info@slotfrenzy.org</a>.
+      </p>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-black py-6 text-center text-sm">
+  <p>&copy; 2025 SlotFrenzy.org. All rights reserved.</p>
+  <div class="space-x-2 mt-2">
+    <a href="/privacy/" class="hover:text-teal-400">Privacy Policy</a> | 
+    <a href="/terms/" class="hover:text-teal-400">Terms of Service</a> | 
+    <a href="/cookies/" class="hover:text-teal-400">Cookies Policy</a>
+  </div>
+  <p class="mt-2">Contact: <a href="mailto:info@slotfrenzy.org" class="text-teal-400">info@slotfrenzy.org</a></p>
+</footer>
+
+<!-- Cookie Consent Popup -->
+<div id="cookieConsent" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-md border border-pink-500/30 text-gray-200 px-4 py-3 rounded-xl shadow-md hidden z-50 max-w-md text-center animate-fade-in">
+  <p class="text-xs md:text-sm mb-2">
+    We use cookies to personalize your experience and improve our site. By clicking “Accept”, you agree to our 
+    <a href="/cookies/" class="text-blue-400 hover:text-blue-300 underline">Cookies Policy</a>.
+  </p>
+  <div class="flex justify-center gap-3">
+    <button onclick="acceptCookies()" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white px-3 py-1 rounded-full text-xs font-semibold shadow hover:scale-105 transition">Accept</button>
+    <button onclick="declineCookies()" class="border border-pink-500/40 text-xs px-3 py-1 rounded-full hover:scale-105 transition">Decline</button>
+  </div>
+</div>
+
+<!-- Age Modal -->
+<div id="ageModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+  <div class="bg-gray-900 p-6 rounded-lg text-center max-w-md w-full">
+    <h2 class="text-2xl mb-4">Age Verification</h2>
+    <p class="mb-6">You must be 18+ to enter SlotFrenzy. Are you over 18?</p>
+    <div class="flex justify-center gap-4">
+      <button id="acceptAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">Yes</button>
+      <button id="denyAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- Dice Canvas script -->
+<script src="../assets/js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('cookiesConsent')) {
+      document.getElementById('cookieConsent').classList.remove('hidden');
+    }
+  });
+  function acceptCookies() {
+    localStorage.setItem('cookiesConsent', 'accepted');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+  function declineCookies() {
+    localStorage.setItem('cookiesConsent', 'declined');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+</script>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

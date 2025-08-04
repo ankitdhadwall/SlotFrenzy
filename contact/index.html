@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – SlotFrenzy</title>
+<meta name="description" content="Join SlotFrenzy to play exciting social casino games, get 5,000 free coins on signup, and enjoy exclusive features. No real money involved.">
+<meta name="keywords" content="social casino, free slots, online slots, play for fun, virtual casino, slot games, register bonus, no real money, leaderboard">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://slotfrenzy.org/contact">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-black text-white font-[Poppins]">
+
+<!-- Navbar (reuse your navbar here) -->
+<header class="sticky top-0 bg-black z-50 shadow-md navbar-gradient-border">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="../assets/images/slotfrenzy-logo.png" alt="SlotFrenzy Logo" class="w-[95px] h-[75px] animate-pulse slotfrenzy-logo">
+    </a>
+    <nav class="hidden md:flex space-x-6 text-base h-16 items-center">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/games/" class="nav-link">Games</a>
+      <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+
+      <!-- Before login -->
+      <a id="loginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow hover:scale-105 transition">Login</a>
+
+      <!-- After login -->
+      <div id="userInfo" class="hidden flex items-center space-x-3">
+        <span id="welcomeText" class="text-gray-200 text-sm"></span>
+        <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      </div>
+    </nav>
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+
+  <div id="mobile-menu" class="hidden bg-black flex flex-col p-4 space-y-2 md:hidden">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/games/" class="nav-link">Games</a>
+    <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+
+    <!-- Before login -->
+    <a id="mobileLoginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow">Login</a>
+
+    <!-- After login -->
+    <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
+      <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
+      <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+    </div>
+  </div>
+</header>
+
+<!-- Contact Hero -->
+<section class="relative py-20 text-center bg-gradient-to-b from-pink-500/10 via-black/60 to-black">
+  <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 mb-4">
+    Contact Us
+  </h1>
+  <p class="max-w-xl mx-auto text-gray-300 text-lg">
+    Have questions, feedback, or need help? Reach out and we'll respond as soon as possible!
+  </p>
+</section>
+
+<!-- Contact Form + Info -->
+<section class="relative py-16 max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+  <!-- Contact Form -->
+  <div class="bg-gray-900 p-8 rounded-2xl shadow-lg border border-pink-500/20">
+    <h2 class="text-2xl font-semibold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400">Send Us a Message</h2>
+    <form class="space-y-4">
+      <input type="text" placeholder="Your Name" required class="w-full bg-black/40 text-white px-4 py-3 rounded-md border border-pink-500/20 focus:border-pink-500/40 focus:outline-none transition">
+      <input type="email" placeholder="Your Email" required class="w-full bg-black/40 text-white px-4 py-3 rounded-md border border-pink-500/20 focus:border-pink-500/40 focus:outline-none transition">
+      <input type="text" placeholder="Subject" class="w-full bg-black/40 text-white px-4 py-3 rounded-md border border-pink-500/20 focus:border-pink-500/40 focus:outline-none transition">
+      <textarea placeholder="Your Message" rows="5" required class="w-full bg-black/40 text-white px-4 py-3 rounded-md border border-pink-500/20 focus:border-pink-500/40 focus:outline-none transition"></textarea>
+      <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-teal-400 text-white px-4 py-3 rounded-full font-semibold shadow hover:scale-105 transition">Send Message</button>
+    </form>
+  </div>
+
+  <!-- Contact Info & Map -->
+  <div class="space-y-6">
+    <div>
+      <h3 class="text-xl font-semibold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400">Contact Details</h3>
+      <p class="text-gray-300">📧 Email: <a href="mailto:info@slotfrenzy.org" class="underline text-teal-400">info@slotfrenzy.org</a></p>
+      <p class="text-gray-300">🏠 Address: 123 Virtual Avenue, Casino City, Funland</p>
+    </div>
+    <div class="rounded-2xl overflow-hidden border border-pink-500/20 shadow">
+      <!-- Replace src below with actual map embed -->
+      <iframe src="https://maps.google.com/maps?q=Las%20Vegas&t=&z=13&ie=UTF8&iwloc=&output=embed" class="w-full h-64" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black py-6 text-center text-sm">
+  <p>&copy; 2025 SlotFrenzy.org. All rights reserved.</p>
+  <div class="space-x-2 mt-2">
+    <a href="/privacy/">Privacy Policy</a> | 
+    <a href="/terms/">Terms</a> | 
+    <a href="/cookies/">Cookies</a>
+  </div>
+  <p class="mt-2">Contact: <a href="mailto:info@slotfrenzy.org">info@slotfrenzy.org</a></p>
+</footer>
+
+<!-- Cookie Consent Popup -->
+<div id="cookieConsent" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-md border border-pink-500/30 text-gray-200 px-4 py-3 rounded-xl shadow-md hidden z-50 max-w-md text-center animate-fade-in">
+  <p class="text-xs md:text-sm mb-2">
+    We use cookies to personalize your experience and improve our site. By clicking “Accept”, you agree to our 
+    <a href="/cookies/" class="text-blue-400 hover:text-blue-300 underline">Cookies Policy</a>.
+  </p>
+  <div class="flex justify-center gap-3">
+    <button onclick="acceptCookies()" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white px-3 py-1 rounded-full text-xs font-semibold shadow hover:scale-105 transition">Accept</button>
+    <button onclick="declineCookies()" class="border border-pink-500/40 text-xs px-3 py-1 rounded-full hover:scale-105 transition">Decline</button>
+  </div>
+</div>
+
+<!-- Age Modal -->
+<div id="ageModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+  <div class="bg-gray-900 p-6 rounded-lg text-center max-w-md w-full">
+    <h2 class="text-2xl mb-4">Age Verification</h2>
+    <p class="mb-6">You must be 18+ to enter SlotFrenzy. Are you over 18?</p>
+    <div class="flex justify-center gap-4">
+      <button id="acceptAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">Yes</button>
+      <button id="denyAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="/assets/js/main.js"></script>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-menu')?.classList.toggle('hidden');
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('cookiesConsent')) {
+      document.getElementById('cookieConsent').classList.remove('hidden');
+    }
+  });
+  function acceptCookies() {
+    localStorage.setItem('cookiesConsent', 'accepted');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+  function declineCookies() {
+    localStorage.setItem('cookiesConsent', 'declined');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+</script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

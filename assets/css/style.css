@@ -1,0 +1,294 @@
+/* Variables */
+:root {
+  --font-heading: 'Poppins', sans-serif;
+  --white-primary: #ffffff;
+  --secondary-bg: #6baed9;
+  --dark-purple: #3b185f;
+  --shadow-dark: rgba(0, 0, 0, 0.5);
+}
+
+/* Apply Poppins globally */
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400; /* default weight */
+}
+html { scroll-behavior: smooth; }
+/* For headings: use bolder weights */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+/* Make buttons a bit bolder */
+button, .cta-button, .bg-gradient-to-r {
+  font-weight: 600;
+}
+
+/* Logo breathing animation */
+@keyframes logoBreath {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.logo {
+  animation: logoBreath 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+/* Hero Section and Gradient main title with glow & slide in */
+@keyframes titleGlow {
+  0%,100% { text-shadow: 0 0 10px #33d3bb; }
+  50% { text-shadow: 0 0 20px #33d3bb; }
+}
+@keyframes titleSlideIn {
+  0% { transform: translateY(30px); opacity:0; }
+  100% { transform: translateY(0); opacity:1; }
+}
+.title-gradient {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  background: linear-gradient(90deg, #f58085 28.5%, #6baed9 50.5%, #57bdde 76.5%, #33d3bb 91.5%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  animation: titleGlow 4s ease-in-out infinite, titleSlideIn 1.2s ease 0.5s both;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background: #111; /* fallback background */
+}
+
+#diceCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-section > div {
+  position: relative;
+  z-index: 10;
+}
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+@keyframes float-reverse {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(5px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-float-reverse {
+  animation: float-reverse 3s ease-in-out infinite;
+}
+
+@keyframes casinoPatternFloat {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
+.badge-glow {
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.3),
+    0 0 8px rgba(255, 105, 180, 0.6),
+    0 0 12px rgba(0, 206, 209, 0.6);
+  box-shadow:
+    0 0 5px rgba(255, 105, 180, 0.3),
+    0 0 10px rgba(0, 206, 209, 0.3);
+}
+@keyframes floatY {
+  0%, 100% { transform: translate(-50%, -60%); }
+  50% { transform: translate(-50%, -40%); }
+}
+
+.animate-float {
+  animation: floatY 3s ease-in-out infinite;
+}
+
+.border-gradient {
+  border-left: 2px solid;
+  border-image: linear-gradient(to bottom, #f58085, #6baed9, #33d3bb) 1;
+}
+
+.border-gradient-to-r {
+  border-image: linear-gradient(to right, #ec4899, #14b8a6) 1;
+}
+
+/* Nav link + active gradient underline */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+  font-weight: 500; /
+}
+.nav-link:hover {
+  color: #f58085; /* hover color */
+}
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #f58085, #6baed9, #57bdde, #33d3bb);
+  border-radius: 2px;
+}
+.navbar-gradient-border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, #ec4899, #8b5cf6, #14b8a6);
+}
+
+#ageModal .text-2xl {
+  background: linear-gradient(90deg, #f58085, #6baed9, #57bdde, #33d3bb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 8s infinite;
+}
+
+/* Testimonial Section */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 105, 180, 0.6); }
+  50% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.8); }
+}
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in-left {
+  animation: fadeInLeft 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse-slow {
+  animation: pulseSlow 6s ease-in-out infinite;
+}
+/* Highlight selected user */
+.active-user {
+  background: linear-gradient(to right, rgba(236, 72, 153, 0.2), rgba(45, 212, 191, 0.2));
+  border-color: rgba(236, 72, 153, 0.3);
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+}
+.user-card.active-user {
+  background: linear-gradient(to right, #f472b6cc, #2dd4bfcc);
+  border-color: #f472b6;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(244,114,182,0.4);
+}
+
+/* Games Page */
+.filter-btn.active {
+  background: linear-gradient(to right, #ec4899, #14b8a6);
+  color: white;
+  border: none !important;
+}
+
+
+/* Responsible Gaming */
+
+  .glass-bg {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  }
+
+  #mobile-menu {
+    transition: all 0.3s ease;
+  }
+
+  /* Live gradient animation for heading */
+  .animated-gradient-text {
+    background: linear-gradient(-45deg, #ec4899, #14b8a6, #facc15, #6366f1);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 6s ease infinite;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  canvas#diceCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.25;
+  }
+
+/* Popup styling */
+.popup {
+  left: 20px;
+  bottom: 20px;
+  background: linear-gradient(160deg, #2d2d6c, #1b1b3a);
+  border: 1px solid #1b1b3a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  z-index: 3000;
+  max-width: 380px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transform: translateY(200%);
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation: bannerSlideIn 0.5s ease, bannerFloat 4s ease-in-out infinite 2s;
+  color: white;
+}
+
+/* Popup subtle float */
+@keyframes bannerFloat {
+  0%, 100% { transform: translateY(200%) translateY(-2px); }
+  50% { transform: translateY(200%) translateY(2px); }
+}
+
+@media (max-width: 1024px) {
+  .slotfrenzy-logo {
+    margin-left: 20px;
+    }
+    .mobile-menuicon{
+      margin-right: 20px;
+    }
+  }

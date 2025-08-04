@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SlotFrenzy – Play Social Casino Games for Fun</title>
+<meta name="description" content="Join SlotFrenzy to play exciting social casino games, get 5,000 free coins on signup, and enjoy exclusive features. No real money involved.">
+<meta name="keywords" content="social casino, free slots, online slots, play for fun, virtual casino, slot games, register bonus, no real money, leaderboard">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://slotfrenzy.org/">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-black text-white font-[Poppins]">
+
+<!-- Navbar -->
+<!-- <header class="sticky top-0 bg-black z-50 shadow-md navbar-gradient-border">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="assets/images/slotfrenzy-logo.png" alt="SlotFrenzy Logo" class="w-[95px] h-[75px] animate-pulse">
+    </a>
+    <nav class="hidden md:flex space-x-8 text-base flex h-16 items-center">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/games/" class="nav-link">Games</a>
+      <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+      <a href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow hover:scale-105 transition">Login</a>
+    </nav>
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+  <div id="mobile-menu" class="hidden bg-black flex flex-col p-4 space-y-2 md:hidden">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/games/" class="nav-link">Games</a>
+    <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+    <a href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow">Login</a>
+  </div>
+</header> -->
+
+<header class="sticky top-0 bg-black z-50 shadow-md navbar-gradient-border">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="assets/images/slotfrenzy-logo.png" alt="SlotFrenzy Logo" class="w-[95px] h-[75px] animate-pulse slotfrenzy-logo">
+    </a>
+    <nav class="hidden md:flex space-x-6 text-base h-16 items-center">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/games/" class="nav-link">Games</a>
+      <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+
+      <!-- Before login -->
+      <a id="loginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow hover:scale-105 transition">Login</a>
+
+      <!-- After login -->
+      <div id="userInfo" class="hidden flex items-center space-x-3">
+        <span id="welcomeText" class="text-gray-200 text-sm"></span>
+        <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      </div>
+    </nav>
+    <button onclick="toggleMenu()" class="md:hidden text-2xl mobile-menuicon">☰</button>
+  </div>
+
+  <div id="mobile-menu" class="hidden bg-black flex flex-col p-4 space-y-2 md:hidden">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/games/" class="nav-link">Games</a>
+    <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+
+    <!-- Before login -->
+    <a id="mobileLoginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow">Login</a>
+
+    <!-- After login -->
+    <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
+      <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
+      <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+    </div>
+  </div>
+</header>
+
+
+<!-- Hero -->
+<section class="relative flex items-center justify-center text-center px-4 h-screen bg-[url('assets/images/dice.jpg')] bg-cover bg-center">
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/60"></div>
+  
+  <!-- Dice particles canvas -->
+  <canvas id="diceCanvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+  
+  <!-- Top centered floating badge -->
+  <div class="absolute top-8 left-1/2 transform -translate-x-1/2 px-6 py-4 w-18 border border-gradient-to-r from-pink-500 to-teal-400 bg-white/10 text-white text-base md:text-base font-semibold shadow animate-pulse animate-float">
+    Limited-time offer
+  </div>
+
+  <!-- Main content -->
+  <div class="relative z-10">
+    <h2 class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 mb-4 px-32">
+      Play Social Casino Games & Get 5,000 Free Coins!
+    </h2>
+    <p class="mb-6 text-lg max-w-2xl mx-auto text-white">
+      No real money involved. Join thousands of players and explore 10+ exciting slot games from top providers.
+    </p>
+    <a href="/login/" class=" register-action inline-block bg-gradient-to-r from-pink-500 to-teal-400 px-6 py-3 rounded-full text-lg font-semibold hover:scale-105 hover:-translate-y-1 transition">
+      Register Now & Get 5000 Coins
+    </a>
+  </div>
+
+  <!-- Bottom centered floating badge -->
+  <div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 px-4 py-4 border border-gradient-to-r from-pink-500 to-teal-400 bg-white/10 text-white text-base md:text-base font-semibold shadow animate-pulse animate-float-reverse">
+    Join now and unlock exclusive features
+  </div>
+</section>
+
+<!-- Free Signup Bonus -->
+<section class="relative py-16 overflow-hidden">
+  <div class="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+    <div class="space-y-4">
+      <h3 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400">Free Signup Bonus</h3>
+      <p class="text-lg text-gray-300">Get 5,000 coins instantly when you register. Compete on leaderboards & unlock exclusive features.</p>
+      <ul class="list-disc list-inside text-gray-400 space-y-1">
+        <li>Instant welcome bonus</li>
+        <li>Special events & tournaments</li>
+        <li>Exclusive badges & rewards</li>
+      </ul>
+    </div>
+    <div class="flex justify-center">
+      <img src="assets/images/bonus-coins.png" alt="Free Signup Bonus" loading="lazy" class="w-[30rem] rounded-lg shadow-lg hover:scale-105 transition" />
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="py-16 text-center">
+  <h3 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 mb-4">About SlotFrenzy</h3>
+  <p class="text-gray-300 max-w-3xl mx-auto">SlotFrenzy is a social casino built purely for fun. Spin free slots, unlock badges, and compete on leaderboards using virtual coins that hold no cash value. We don’t offer real-money gambling or payouts — it’s all about entertainment!</p>
+</section>
+
+<!-- Features -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
+    <div class="bg-gray-800 p-6 rounded-xl shadow hover:shadow-xl transition">
+      <h4 class="text-xl font-semibold mb-2 bg-gradient-to-r from-pink-500 to-teal-400 bg-clip-text text-transparent">Play for Fun</h4>
+      <p class="text-gray-300">All spins use virtual coins only — no real money gambling.</p>
+    </div>
+    <div class="bg-gray-800 p-6 rounded-xl shadow hover:shadow-xl transition">
+      <h4 class="text-xl font-semibold mb-2 bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">Free Signup Bonus</h4>
+      <p class="text-gray-300">5,000 coins instantly when you register.</p>
+    </div>
+    <div class="bg-gray-800 p-6 rounded-xl shadow hover:shadow-xl transition">
+      <h4 class="text-xl font-semibold mb-2 bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent">New Games Weekly</h4>
+      <p class="text-gray-300">Exciting new slots & tournaments weekly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- About SlotFrenzy Games -->
+<section class="relative py-16 overflow-hidden bg-gray-900">
+  <!-- Gradient overlay background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-pink-500/10 via-teal-400/10 to-black/70"></div>
+  <div class="absolute inset-0 bg-black"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4">
+    <!-- Title and description -->
+    <div class="text-center mb-10">
+      <h3 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 mb-2">
+        About SlotFrenzy Games
+      </h3>
+      <p class="text-gray-300 max-w-2xl mx-auto">
+        Discover our top-played games and explore new titles added weekly to keep the excitement fresh!
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Slider (left, spans 2 columns on desktop) -->
+      <div class="md:col-span-2 relative overflow-hidden">
+        <div id="slider" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Slide 1 -->
+          <div class="min-w-full bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg border border-pink-500/30 hover:scale-[1.02] transition">
+            <img src="assets/images/Gladiator-Legends.jpg" alt="Gladiator Legends" class="w-full h-[22rem]">
+            <div class="p-6 space-y-3">
+              <h4 class="text-xl font-bold text-white">Gladiator Legends</h4>
+              <p class="text-sm text-teal-400 font-semibold">HACKSAW GAMING</p>
+              <p class="text-gray-400 text-sm">Dive into a world of cascading wins and big multipliers!</p>
+              <div class="flex gap-3 mt-4">
+                <a href="javascript:void(0)" class="inline-flex items-center bg-gradient-to-r from-pink-500 to-teal-400 text-white text-sm px-4 py-2 rounded-full font-semibold shadow animate-pulse hover:scale-105 transition">
+                  ▶️ PLAY NOW
+                </a>
+                <span class="bg-pink-500 text-white text-xs px-2 py-2 rounded-full">FREE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="min-w-full bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg border border-pink-500/30 hover:scale-[1.02] transition">
+            <img src="assets/images/Zeus-vs-Hades.png" alt="Zeus vs Hades" class="w-full h-[22rem]">
+            <div class="p-6 space-y-3">
+              <h4 class="text-xl font-bold text-white">Zeus vs Hades</h4>
+              <p class="text-sm text-teal-400 font-semibold">PRAGMATIC PLAY</p>
+              <p class="text-gray-400 text-sm">Classic card thrills with dice bonuses and multipliers.</p>
+              <div class="flex gap-3 mt-4">
+                <a href="javascript:void(0)" class="inline-flex items-center bg-gradient-to-r from-pink-500 to-teal-400 text-white text-sm px-4 py-2 rounded-full font-semibold shadow animate-pulse hover:scale-105 transition">
+                  ▶️ PLAY NOW
+                </a>
+                <span class="bg-pink-500 text-white text-xs px-2 py-2 rounded-full">FREE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="min-w-full bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg border border-pink-500/30 hover:scale-[1.02] transition">
+            <img src="assets/images/The-Crypt.png" alt="The Crypt" class="w-full h-[22rem]">
+            <div class="p-6 space-y-3">
+              <h4 class="text-xl font-bold text-white">The Crypt</h4>
+              <p class="text-sm text-teal-400 font-semibold">NOLIMIT CITY</p>
+              <p class="text-gray-400 text-sm">Classic card thrills with dice bonuses and multipliers.</p>
+              <div class="flex gap-3 mt-4">
+                <a href="javascript:void(0)" class="inline-flex items-center bg-gradient-to-r from-pink-500 to-teal-400 text-white text-sm px-4 py-2 rounded-full font-semibold shadow animate-pulse hover:scale-105 transition">
+                  ▶️ PLAY NOW
+                </a>
+                <span class="bg-pink-500 text-white text-xs px-2 py-2 rounded-full">FREE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider controls -->
+        <div class="absolute inset-y-0 left-0 flex items-center px-2">
+          <button onclick="prevSlide()" class="text-white text-2xl hover:scale-125 transition">‹</button>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center px-2">
+          <button onclick="nextSlide()" class="text-white text-2xl hover:scale-125 transition">›</button>
+        </div>
+      </div>
+
+      <!-- Right: Quick game list -->
+      <div class="space-y-4">
+        <!-- Card 1 -->
+        <div class="flex justify-between items-center bg-black px-4 py-3 rounded-xl border border-pink-500/20 hover:border-pink-500/40 shadow-md hover:shadow-pink-500/30 transition hover:scale-105">
+          <div>
+            <p class="text-white font-semibold text-sm">Gladiator Legends</p>
+            <p class="text-teal-400 text-xs">HACKSAW GAMING</p>
+          </div>
+          <div class="flex gap-2">
+            <a href="javascript:void(0)" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse hover:scale-105 transition">Play</a>
+            <span class="bg-pink-500 text-white text-[10px] px-2 py-1 rounded-full">FREE</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="flex justify-between items-center bg-black px-4 py-3 rounded-xl border border-pink-500/20 hover:border-pink-500/40 shadow-md hover:shadow-pink-500/30 transition hover:scale-105">
+          <div>
+            <p class="text-white font-semibold text-sm">Zevs vs Hades</p>
+            <p class="text-teal-400 text-xs">PRAGMATIC PLAY</p>
+          </div>
+          <a href="javascript:void(0)" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse hover:scale-105 transition">Play</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="flex justify-between items-center bg-black px-4 py-3 rounded-xl border border-pink-500/20 hover:border-pink-500/40 shadow-md hover:shadow-pink-500/30 transition hover:scale-105">
+          <div>
+            <p class="text-white font-semibold text-sm">The Crypt</p>
+            <p class="text-teal-400 text-xs">NOLIMIT CITY</p>
+          </div>
+          <a href="javascript:void(0)" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse hover:scale-105 transition">Play</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explore all button -->
+    <div class="text-center mt-8">
+      <a href="/games/" class="inline-flex items-center text-white text-sm px-4 py-2 rounded-full border border-pink-500/30 hover:border-pink-500/60 transition">
+        ⚡ EXPLORE ALL GAMES
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ New: Leaderboard -->
+<section class="relative py-16">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <h3 class="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-pink-500 to-teal-400 bg-clip-text text-transparent">🏆 Top Players This Week</h3>
+    
+    <!-- Top 3 cards -->
+    <div class="grid md:grid-cols-3 gap-6 text-left mb-8">
+      <div class="bg-gray-700 p-4 rounded-lg shadow hover:scale-105 transition">
+        <p class="font-semibold text-white">Alex Rivers</p>
+        <p class="text-gray-400">Score: 152,300</p>
+      </div>
+      <div class="bg-gray-700 p-4 rounded-lg shadow hover:scale-105 transition">
+        <p class="font-semibold text-white">Maya Brooks</p>
+        <p class="text-gray-400">Score: 145,000</p>
+      </div>
+      <div class="bg-gray-700 p-4 rounded-lg shadow hover:scale-105 transition">
+        <p class="font-semibold text-white">Chris Lee</p>
+        <p class="text-gray-400">Score: 137,800</p>
+      </div>
+    </div>
+    
+    <!-- Top 5 table -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-gradient-to-b from-gray-800 via-black to-gray-900 rounded-lg shadow text-left ">
+        <thead>
+          <tr class="bg-gradient-to-r from-pink-500 to-teal-400 text-white">
+            <th class="py-3 px-4">#</th>
+            <th class="py-3 px-4">Name</th>
+            <th class="py-3 px-4">Game</th>
+            <th class="py-3 px-4">Ranking</th>
+            <th class="py-3 px-4">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-600 hover:bg-gray-600 transition">
+            <td class="py-2 px-4">1</td>
+            <td class="py-2 px-4 text-white">Alex Rivers</td>
+            <td class="py-2 px-4 text-gray-300">Triple Fortune Dragon Rising</td>
+            <td class="py-2 px-4 text-gray-300">#1</td>
+            <td class="py-2 px-4 text-gray-300">152,300</td>
+          </tr>
+          <tr class="border-b border-gray-600 hover:bg-gray-600 transition">
+            <td class="py-2 px-4">2</td>
+            <td class="py-2 px-4 text-white">Maya Brooks</td>
+            <td class="py-2 px-4 text-gray-300">Playing Cards and Dice</td>
+            <td class="py-2 px-4 text-gray-300">#2</td>
+            <td class="py-2 px-4 text-gray-300">145,000</td>
+          </tr>
+          <tr class="border-b border-gray-600 hover:bg-gray-600 transition">
+            <td class="py-2 px-4">3</td>
+            <td class="py-2 px-4 text-white">Chris Lee</td>
+            <td class="py-2 px-4 text-gray-300">Triple Fortune Dragon Rising</td>
+            <td class="py-2 px-4 text-gray-300">#3</td>
+            <td class="py-2 px-4 text-gray-300">137,800</td>
+          </tr>
+          <tr class="border-b border-gray-600 hover:bg-gray-600 transition">
+            <td class="py-2 px-4">4</td>
+            <td class="py-2 px-4 text-white">Ella Stone</td>
+            <td class="py-2 px-4 text-gray-300">Playing Cards and Dice</td>
+            <td class="py-2 px-4 text-gray-300">#4</td>
+            <td class="py-2 px-4 text-gray-300">129,500</td>
+          </tr>
+          <tr class="hover:bg-gray-600 transition">
+            <td class="py-2 px-4">5</td>
+            <td class="py-2 px-4 text-white">Liam Chen</td>
+            <td class="py-2 px-4 text-gray-300">Triple Fortune Dragon Rising</td>
+            <td class="py-2 px-4 text-gray-300">#5</td>
+            <td class="py-2 px-4 text-gray-300">122,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="relative py-16 overflow-hidden">
+  <!-- Glowing animated background -->
+  <div class="absolute inset-0 bg-slotfrenzy-pattern bg-cover bg-center opacity-30 animate-pulse-slow"></div>
+  <div class="absolute inset-0 bg-black backdrop-blur-sm"></div>
+
+  <div class="flex justify-center mb-6">
+    <h3 class="relative inline-block text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 after:block after:h-0.5 after:bg-gradient-to-r after:from-pink-500 after:to-teal-400">
+      What Our Players Say
+    </h3>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 items-start">
+    <!-- Left: User list -->
+    <div id="userList" class="space-y-4">
+      <button data-index="0" class="user-card flex items-center p-4 rounded-lg backdrop-blur-md border border-pink-500/30 shadow-md hover:shadow-pink-500/40 transform transition duration-300 hover:scale-105 animate-fade-in-left w-full text-left">
+        <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Alex Rivers" class="w-12 h-12 rounded-full mr-4 border-2 border-pink-500/40 animate-glow">
+        <div>
+          <p class="font-semibold text-white">Alex Rivers</p>
+          <p class="text-gray-300 text-sm">Daily player at SlotFrenzy</p>
+        </div>
+      </button>
+
+      <button data-index="1" class="user-card flex items-center p-4 rounded-lg backdrop-blur-md border border-pink-500/30 shadow-md hover:shadow-pink-500/40 transform transition duration-300 hover:scale-105 animate-fade-in-left w-full text-left">
+        <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Maya Brooks" class="w-10 h-10 rounded-full mr-3 border border-pink-500/30 animate-glow">
+        <div>
+          <p class="font-semibold text-white">Maya Brooks</p>
+          <p class="text-gray-400 text-sm">Streamer & slot fan</p>
+        </div>
+      </button>
+
+      <button data-index="2" class="user-card flex items-center p-4 rounded-lg backdrop-blur-md border border-pink-500/30 shadow-md hover:shadow-pink-500/40 transform transition duration-300 hover:scale-105 animate-fade-in-left w-full text-left">
+        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Chris Lee" class="w-10 h-10 rounded-full mr-3 border border-teal-400/30 animate-glow">
+        <div>
+          <p class="font-semibold text-white">Chris Lee</p>
+          <p class="text-gray-400 text-sm">Leaderboards regular</p>
+        </div>
+      </button>
+
+      <a href="javascript:void(0)" class="text-sm text-blue-400 hover:text-blue-300 transition block mt-2 animate-fade-in-up delay-500">View all player stories →</a>
+    </div>
+
+    <!-- Right: Testimonial box -->
+    <div id="testimonialBox" class="md:col-span-2 mt-6 md:mt-0 animate-fade-in-up delay-300">
+      <div class="bg-white/5 rounded-xl p-6 md:p-8 backdrop-blur-md border border-pink-500/20 shadow-lg hover:shadow-pink-500/30 transition transform hover:scale-[1.02]">
+        <svg class="w-8 h-8 text-pink-500 mb-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M7.17 6A5.978 5.978 0 0 0 6 9v3a3 3 0 0 0 3 3v3a6 6 0 0 1-6-6V9a6 6 0 0 1 4.17-5.66l.33.66zM17.17 6A5.978 5.978 0 0 0 16 9v3a3 3 0 0 0 3 3v3a6 6 0 0 1-6-6V9a6 6 0 0 1 4.17-5.66l.33.66z"/>
+        </svg>
+        <h3 id="testimonialTitle" class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 mb-3">Best slots site I've played!</h3>
+        <p id="testimonialText" class="text-gray-300 mb-3">
+          SlotFrenzy’s graphics and daily bonuses keep me coming back every night. It's my go-to for relaxing spins after work.
+        </p>
+        <p id="testimonialExtra" class="text-gray-400">
+          Started with the free 5,000 coins — now I'm climbing the leaderboards and unlocking special badges!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-black py-6 text-center text-sm">
+  <p>&copy; 2025 SlotFrenzy.org. All rights reserved.</p>
+  <div class="space-x-2 mt-2">
+    <a href="/privacy/" class="hover:text-teal-400">Privacy Policy</a> | 
+    <a href="/terms/" class="hover:text-teal-400">Terms of Service</a> | 
+    <a href="/cookies/" class="hover:text-teal-400">Cookies Policy</a>
+  </div>
+  <p class="mt-2">Contact: <a href="mailto:info@slotfrenzy.org" class="text-teal-400">info@slotfrenzy.org</a></p>
+</footer>
+
+<!-- Cookie Consent Popup -->
+<div id="cookieConsent" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-md border border-pink-500/30 text-gray-200 px-4 py-3 rounded-xl shadow-md hidden z-50 max-w-md text-center animate-fade-in">
+  <p class="text-xs md:text-sm mb-2">
+    We use cookies to personalize your experience and improve our site. By clicking “Accept”, you agree to our 
+    <a href="/cookies/" class="text-blue-400 hover:text-blue-300 underline">Cookies Policy</a>.
+  </p>
+  <div class="flex justify-center gap-3">
+    <button onclick="acceptCookies()" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white px-3 py-1 rounded-full text-xs font-semibold shadow hover:scale-105 transition">Accept</button>
+    <button onclick="declineCookies()" class="border border-pink-500/40 text-xs px-3 py-1 rounded-full hover:scale-105 transition">Decline</button>
+  </div>
+</div>
+
+<!-- Age Modal -->
+<div id="ageModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+  <div class="bg-gray-900 p-6 rounded-lg text-center max-w-md w-full">
+    <h2 class="text-2xl mb-4">Age Verification</h2>
+    <p class="mb-6">You must be 18+ to enter SlotFrenzy. Are you over 18?</p>
+    <div class="flex justify-center gap-4">
+      <button id="acceptAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">Yes</button>
+      <button id="denyAgeBtn" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/diceParticles.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('cookiesConsent')) {
+      document.getElementById('cookieConsent').classList.remove('hidden');
+    }
+  });
+  function acceptCookies() {
+    localStorage.setItem('cookiesConsent', 'accepted');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+  function declineCookies() {
+    localStorage.setItem('cookiesConsent', 'declined');
+    document.getElementById('cookieConsent').classList.add('hidden');
+  }
+</script>
+</body>
+</html>
