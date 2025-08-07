@@ -175,3 +175,63 @@ document.addEventListener('DOMContentLoaded', () => {
   if (acceptBtn) acceptBtn.addEventListener('click', acceptAge);
   if (denyBtn) denyBtn.addEventListener('click', denyAge);
 });
+
+
+// Soft gate: 2 free demo plays for guests
+document.addEventListener('DOMContentLoaded', () => {
+  const DEMO_LIMIT = 2;
+
+  const registerGateModal   = document.getElementById('registerGateModal');
+  const registerGateBackdrop= document.getElementById('registerGateBackdrop');
+  const registerGateClose   = document.getElementById('registerGateClose');
+
+  function isLoggedIn() {
+    return !!localStorage.getItem('username');
+  }
+  function getDemoCount() {
+    return parseInt(localStorage.getItem('demoCount') || '0', 10);
+  }
+  function incDemoCount() {
+    const next = getDemoCount() + 1;
+    localStorage.setItem('demoCount', String(next));
+    return next;
+  }
+  function showRegisterGate() {
+    registerGateModal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  }
+  function hideRegisterGate() {
+    registerGateModal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  if (registerGateBackdrop) registerGateBackdrop.addEventListener('click', hideRegisterGate);
+  if (registerGateClose)    registerGateClose.addEventListener('click', hideRegisterGate);
+
+  // Attach to your playable buttons
+  document.querySelectorAll('.play-demo-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const path = btn.getAttribute('data-game-path');
+      const card = btn.closest('article');
+      const gameTitle = card ? (card.querySelector('h2')?.textContent || 'Game Demo') : 'Game Demo';
+
+      // Logged in users: no limit
+      if (isLoggedIn()) {
+        openDemo(path, gameTitle);
+        return;
+      }
+
+      // Guests: check limit
+      const current = getDemoCount();
+      if (current >= DEMO_LIMIT) {
+        showRegisterGate();
+        return;
+      }
+
+      // Allow and increment
+      incDemoCount();
+      openDemo(path, gameTitle);
+    });
+  });
+});

@@ -7,8 +7,9 @@
 <meta name="description" content="Join SlotFrenzy to play exciting social casino games, get 5,000 free coins on signup, and enjoy exclusive features. No real money involved.">
 <meta name="keywords" content="free slot games, social casino games, online slots, virtual slot machines, play for fun, slot tournaments, top slot games, new slots weekly, SlotFrenzy games">
 <link rel="canonical" href="https://slotfrenzy.org/games">
-<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="../assets/css/style.css">
@@ -124,35 +125,59 @@
 
   <!-- Games grid -->
   <div id="gamesGrid" class="grid gap-6 md:grid-cols-3">
-    <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
-      <img src="../assets/images/Gladiator-Legends.jpg" alt="Gladiator Legends" class="w-full h-48 object-cover">
-      <div class="p-6 space-y-2">
-        <h2 class="text-lg font-semibold">Gladiator Legends</h2>
-        <p class="text-xs text-teal-400">HACKSAW GAMING</p>
-        <p class="text-gray-400 text-sm">Spin the dragon reels for legendary wins!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
-      </div>
-    </article>
+ <!-- 1) Gladiator Legends -->
+  <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+    <img src="../assets/images/Gladiator-Legends.jpg" alt="Gladiator Legends" class="w-full h-48 object-cover">
+    <div class="p-6 space-y-2">
+      <h2 class="text-lg font-semibold">Gladiator Legends</h2>
+      <p class="text-xs text-teal-400">HACKSAW GAMING</p>
+      <p class="text-gray-400 text-sm">Spin the dragon reels for legendary wins!</p>
+      <a href="../games/game/index.html"
+         class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+         data-game-title="Gladiator Legends"
+         onclick="handlePlayClick(event, 0)"
+         data-src="https://d3le5997hik6o.cloudfront.net/1160/1.47.1/index.html?language=en&channel=desktop&gameid=1160&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
+         data-return-url="/games/">
+         ▶️ PLAY FREE
+      </a>
+    </div>
+  </article>
 
-    <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
-      <img src="../assets/images/Le-Bandit.png" alt="Le Bandit" class="w-full h-48 object-cover">
-      <div class="p-6 space-y-2">
-        <h2 class="text-lg font-semibold">Le Bandit</h2>
-        <p class="text-xs text-teal-400">HACKSAW GAMING</p>
-        <p class="text-gray-400 text-sm">Roll dice & play timeless card games in style!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
-      </div>
-    </article>
+  <!-- 2) Le Bandit -->
+  <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+    <img src="../assets/images/Le-Bandit.png" alt="Le Bandit" class="w-full h-48 object-cover">
+    <div class="p-6 space-y-2">
+      <h2 class="text-lg font-semibold">Le Bandit</h2>
+      <p class="text-xs text-teal-400">HACKSAW GAMING</p>
+      <p class="text-gray-400 text-sm">Roll dice & play timeless card games in style!</p>
+      <a href="../games/game/index.html"
+         class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+         data-game-title="Le Bandit"
+         onclick="handlePlayClick(event, 1)"
+         data-src="https://d3le5997hik6o.cloudfront.net/1309/1.19.1/index.html?language=en&channel=desktop&gameid=1309&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
+         data-return-url="/games/">
+         ▶️ PLAY FREE
+      </a>
+    </div>
+  </article>
 
-    <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+<!-- 2) Wanted -->
+  <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/wanted-dead-or-a-whild.png" alt="Wanted" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">Wanted</h2>
         <p class="text-xs text-teal-400">HACKSAW GAMING</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+        <a href="#"
+         class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+         data-game-title="Wanted"
+         onclick="handlePlayClick(event, 2)"
+         data-src="https://d3le5997hik6o.cloudfront.net/1067/1.67.0/index.html?language=en&channel=desktop&gameid=1067&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
+         data-return-url="/games/">
+         ▶️ PLAY FREE
+      </a>
       </div>
-    </article>
+  </article>
 
     <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/The-Dog-House-Dog-or-Alive.png" alt="The Dog House Dog or Alive" class="w-full h-48 object-cover">
@@ -340,8 +365,33 @@
   </div>
 </div>
 
+<h2 id="gameTitle" class="text-xl font-bold text-white text-center my-2"></h2>
+<!-- Register Gate Modal -->
+<div id="registerGateModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden">
+  <div class="absolute inset-0" id="registerGateBackdrop"></div>
+  <div class="relative w-11/12 max-w-md mx-auto mt-28 bg-gray-900 border border-pink-500/30 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="px-6 py-5 text-center">
+      <h3 class="text-lg font-semibold text-white mb-2">Create an account to keep playing</h3>
+      <p class="text-gray-300 text-sm mb-4">
+        You’ve reached your free demo limit. Register now to unlock all games, challenges, and leaderboards.
+      </p>
+      <div class="flex items-center justify-center gap-3">
+        <a href="/register/" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:scale-105 transition">
+          Register Free
+        </a>
+        <button id="registerGateClose" class="border border-pink-500/40 text-white px-4 py-2 rounded-full text-sm hover:scale-105 transition">
+          Not now
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- JS -->
+<script src="../assets/js/searchGames.js"></script>
 <script src="../assets/js/main.js"></script>
+
+
 <script>
 function toggleMenu(){
   const menu = document.getElementById('mobile-menu');
@@ -385,6 +435,8 @@ function draw(){
 }
 draw();
 </script>
+
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     if (!localStorage.getItem('cookiesConsent')) {
@@ -401,7 +453,75 @@ draw();
   }
 </script>
 
-<script src="../assets/js/searchGames.js"></script>
-<script src="../assets/js/main.js"></script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.play-demo-btn');
+  
+  buttons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      if (index < 2) {
+        // Free games (first 2)
+        window.location.href = btn.getAttribute('data-game-path');
+      } else {
+        // Locked games - show modal
+        document.getElementById('registerModal').classList.remove('hidden');
+      }
+    });
+  });
+});
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const demoButtons = document.querySelectorAll(".play-demo-btn");
+
+    demoButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const title = encodeURIComponent(btn.dataset.gameTitle || "");
+        const src = encodeURIComponent(btn.dataset.src || "");
+        const back = encodeURIComponent(btn.dataset.returnUrl || "/games");
+
+        if (!title || !src) {
+          console.warn("Missing title or src in button data attributes.");
+          return;
+        }
+
+        const gameUrl = `../games/game/index.html?title=${title}&src=${src}&back=${back}`;
+        window.location.href = gameUrl;
+      });
+    });
+  });
+</script>
+
+<script>
+  function handlePlayClick(event, gameIndex) {
+    event.preventDefault(); // ⛔️ Block default <a> behavior
+
+    const isRegistered = localStorage.getItem("isRegistered") === "true";
+
+    if (gameIndex <= 1 || isRegistered) {
+      // ✅ Allow game to load
+      const target = event.currentTarget;
+      const title = encodeURIComponent(target.getAttribute("data-game-title"));
+      const src = encodeURIComponent(target.getAttribute("data-src"));
+      const back = encodeURIComponent(target.getAttribute("data-return-url") || "/games/");
+
+      window.location.href = `../games/game/index.html?title=${title}&src=${src}&back=${back}`;
+    } else {
+      // 🔒 Show alert and stop here (NO redirect)
+      alert("Please register to access this game.");
+      // Do not redirect to iframe page!
+      // Optional: send to register page
+      window.location.href = "/register/";
+    }
+  }
+</script>
+
+
 </body>
 </html>

@@ -291,4 +291,8 @@ button, .cta-button, .bg-gradient-to-r {
     .mobile-menuicon{
       margin-right: 20px;
     }
+    .mobile-txt{
+      padding: 0 !important;
+      line-height: 1.4 !important;
+    }
   }

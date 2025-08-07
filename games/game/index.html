@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SlotFrenzy Games – Play Free Social Casino Slots</title>
+<meta name="description" content="Join SlotFrenzy to play exciting social casino games, get 5,000 free coins on signup, and enjoy exclusive features. No real money involved.">
+<meta name="keywords" content="free slot games, social casino games, online slots, virtual slot machines, play for fun, slot tournaments, top slot games, new slots weekly, SlotFrenzy games">
+<link rel="canonical" href="https://slotfrenzy.org/games">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="../../assets/css/style.css">
+  <!-- Prevent scrollbars and ensure full-bleed -->
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      /* font-family: sans-serif; */
+      background-color: #000;
+      color: white;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header, footer {
+      background-color: #111;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: auto;
+    }
+
+    .game-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .game-frame {
+      width: 100%;
+      /* max-width: 1280px; */
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .game-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .back-link {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .back-link a {
+      color: #4db8ff;
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .game-frame {
+        height: 60vh;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .game-frame {
+        height: 50vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+<header class="sticky top-0 bg-black z-50 shadow-md navbar-gradient-border">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="../../assets/images/slotfrenzy-logo.png" alt="SlotFrenzy Logo" class="w-[95px] h-[75px] animate-pulse slotfrenzy-logo">
+    </a>
+    <nav class="hidden md:flex space-x-6 text-base h-16 items-center">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/games/" class="nav-link">Games</a>
+      <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+
+      <!-- Before login -->
+      <a id="loginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow hover:scale-105 transition">Login</a>
+
+      <!-- After login -->
+      <div id="userInfo" class="hidden flex items-center space-x-3">
+        <span id="welcomeText" class="text-gray-200 text-sm"></span>
+        <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      </div>
+    </nav>
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+  </div>
+
+  <div id="mobile-menu" class="hidden bg-black flex flex-col p-4 space-y-2 md:hidden">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/games/" class="nav-link">Games</a>
+    <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+
+    <!-- Before login -->
+    <a id="mobileLoginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow">Login</a>
+
+    <!-- After login -->
+    <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
+      <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
+      <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
+      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+    </div>
+  </div>
+</header>
+
+  <!-- Game Content -->
+   <main class="p-6 text-center">
+    <h1 id="gameTitle" class="text-xl font-bold mb-4"></h1>
+    <iframe id="gameFrame" class="w-full h-[75vh] rounded-xl border-2 overflow-auto border-teal-500 shadow-lg" allowfullscreen scrolling="yes"></iframe>
+    <div class="mt-4">
+      <a href="/games/index.html"
+         class="inline-block mt-2 px-4 py-2 text-sm bg-gray-800 hover:bg-gray-700 rounded-full transition">
+         ⬅️ Return to Games
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+ <footer class="bg-black py-6 text-center text-sm">
+  <p>&copy; 2025 SlotFrenzy.org. All rights reserved.</p>
+  <div class="space-x-2 mt-2">
+    <a href="/privacy/" class="hover:text-teal-400">Privacy Policy</a> | 
+    <a href="/terms/" class="hover:text-teal-400">Terms of Service</a> | 
+    <a href="/cookies/" class="hover:text-teal-400">Cookies Policy</a>
+  </div>
+  <p class="mt-2">Contact: <a href="mailto:info@slotfrenzy.org" class="text-teal-400">info@slotfrenzy.org</a></p>
+</footer>
+
+
+<script src="../../assets/js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    let title = urlParams.get('title');
+    let src = urlParams.get('src');
+    let backUrl = urlParams.get('back');
+
+    // If we have params in the URL, store them
+    if (title && src) {
+      sessionStorage.setItem('gameTitle', title);
+      sessionStorage.setItem('gameSrc', decodeURIComponent(src));
+    }
+
+    if (backUrl) {
+      sessionStorage.setItem('gameBack', decodeURIComponent(backUrl));
+    }
+
+    // Use values from sessionStorage if not in URL
+    title = title || sessionStorage.getItem('gameTitle');
+    src = src || sessionStorage.getItem('gameSrc');
+    backUrl = backUrl || sessionStorage.getItem('gameBack');
+
+    if (title && src) {
+      document.getElementById('gameTitle').textContent = title;
+      document.getElementById('gameFrame').src = src;
+    } else {
+      document.getElementById('gameFrame').outerHTML = "<p class='text-white text-center'>Game not found</p>";
+    }
+
+    if (backUrl) {
+      const returnBtn = document.querySelector('a[href="/games/index.html"]');
+      if (returnBtn) returnBtn.href = backUrl;
+    }
+
+    // ✅ Clean the query string from the address bar
+    window.history.replaceState({}, document.title, window.location.pathname);
+  });
+</script>
+
+
+</body>
+</html>

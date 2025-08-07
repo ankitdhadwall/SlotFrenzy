@@ -96,7 +96,7 @@
 
   <!-- Main content -->
   <div class="relative z-10">
-    <h2 class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 mb-4 px-32">
+    <h2 class="mobile-txt text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-400 mb-4 px-32">
       Play Social Casino Games & Get 5,000 Free Coins!
     </h2>
     <p class="mb-6 text-lg max-w-2xl mx-auto text-white">
@@ -184,9 +184,16 @@
               <p class="text-sm text-teal-400 font-semibold">HACKSAW GAMING</p>
               <p class="text-gray-400 text-sm">Dive into a world of cascading wins and big multipliers!</p>
               <div class="flex gap-3 mt-4">
-                <a href="javascript:void(0)" class="inline-flex items-center bg-gradient-to-r from-pink-500 to-teal-400 text-white text-sm px-4 py-2 rounded-full font-semibold shadow animate-pulse hover:scale-105 transition">
+                <!-- <a href="javascript:void(0)" class="inline-flex items-center bg-gradient-to-r from-pink-500 to-teal-400 text-white text-sm px-4 py-2 rounded-full font-semibold shadow animate-pulse hover:scale-105 transition">
                   ▶️ PLAY NOW
-                </a>
+                </a> -->
+                <a href="../games/game/index.html"
+         class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+         data-game-title="Gladiator Legends"
+         data-src="https://d3le5997hik6o.cloudfront.net/1160/1.47.1/index.html?language=en&channel=desktop&gameid=1160&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
+         data-return-url="/games/">
+         ▶️ PLAY FREE
+      </a>
                 <span class="bg-pink-500 text-white text-xs px-2 py-2 rounded-full">FREE</span>
               </div>
             </div>
@@ -242,8 +249,15 @@
             <p class="text-teal-400 text-xs">HACKSAW GAMING</p>
           </div>
           <div class="flex gap-2">
-            <a href="javascript:void(0)" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse hover:scale-105 transition">Play</a>
-            <span class="bg-pink-500 text-white text-[10px] px-2 py-1 rounded-full">FREE</span>
+            <!-- <a href="javascript:void(0)" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse hover:scale-105 transition">Play</a> -->
+            <a href="../games/game/index.html"
+         class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+         data-game-title="Gladiator Legends"
+         data-src="https://d3le5997hik6o.cloudfront.net/1160/1.47.1/index.html?language=en&channel=desktop&gameid=1160&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
+         data-return-url="/games/">
+         ▶️ PLAY FREE
+      </a>
+            <!-- <span class="bg-pink-500 text-white text-[10px] px-2 py-1 rounded-full">FREE</span> -->
           </div>
         </div>
 
@@ -465,5 +479,30 @@
     document.getElementById('cookieConsent').classList.add('hidden');
   }
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const demoButtons = document.querySelectorAll(".play-demo-btn");
+
+    demoButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const title = encodeURIComponent(btn.dataset.gameTitle || "");
+        const src = encodeURIComponent(btn.dataset.src || "");
+        const back = encodeURIComponent(btn.dataset.returnUrl || "/games");
+
+        if (!title || !src) {
+          console.warn("Missing title or src in button data attributes.");
+          return;
+        }
+
+        const gameUrl = `../games/game/index.html?title=${title}&src=${src}&back=${back}`;
+        window.location.href = gameUrl;
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
