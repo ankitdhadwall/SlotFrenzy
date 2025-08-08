@@ -177,61 +177,145 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Soft gate: 2 free demo plays for guests
+
+/*
+  Slot 2 Games Registration Gate
+  - Shows a registration modal when a user tries to play a demo game without being registered.
+  - Limits the number of demo plays before requiring registration.
+  - Redirects to registration page with game info if user exceeds the demo limit.
+*/
 document.addEventListener('DOMContentLoaded', () => {
   const DEMO_LIMIT = 2;
 
-  const registerGateModal   = document.getElementById('registerGateModal');
-  const registerGateBackdrop= document.getElementById('registerGateBackdrop');
-  const registerGateClose   = document.getElementById('registerGateClose');
+  const registerGateModal = document.getElementById('registerGateModal');
+  const registerGateBackdrop = document.getElementById('registerGateBackdrop');
+  const confirmRegisterBtn = document.getElementById('confirmRegister');
+  const closeRegisterBtn = document.getElementById('closeRegisterModal');
 
   function isLoggedIn() {
-    return !!localStorage.getItem('username');
+    return !!localStorage.getItem('username') || localStorage.getItem('isRegistered') === 'true';
   }
+
   function getDemoCount() {
     return parseInt(localStorage.getItem('demoCount') || '0', 10);
   }
+
   function incDemoCount() {
     const next = getDemoCount() + 1;
     localStorage.setItem('demoCount', String(next));
     return next;
   }
+
   function showRegisterGate() {
     registerGateModal.classList.remove('hidden');
+    registerGateBackdrop.classList.remove('hidden');
     document.body.classList.add('overflow-hidden');
   }
+
   function hideRegisterGate() {
     registerGateModal.classList.add('hidden');
+    registerGateBackdrop.classList.add('hidden');
     document.body.classList.remove('overflow-hidden');
   }
 
-  if (registerGateBackdrop) registerGateBackdrop.addEventListener('click', hideRegisterGate);
-  if (registerGateClose)    registerGateClose.addEventListener('click', hideRegisterGate);
+  function openDemo(path, title) {
+    const returnUrl = window.location.pathname;
+    const url = `/games/game/index.html?title=${encodeURIComponent(title)}&src=${encodeURIComponent(path)}&back=${encodeURIComponent(returnUrl)}`;
+    window.location.href = url;
+  }
 
-  // Attach to your playable buttons
+  if (registerGateBackdrop) registerGateBackdrop.addEventListener('click', hideRegisterGate);
+  if (closeRegisterBtn) closeRegisterBtn.addEventListener('click', hideRegisterGate);
+
+  if (confirmRegisterBtn) {
+    confirmRegisterBtn.addEventListener('click', () => {
+      const gameButton = document.querySelector('.play-demo-btn[data-intent="pending"]');
+      if (gameButton) {
+        const path = gameButton.getAttribute('data-src');
+        const title = gameButton.getAttribute('data-game-title');
+        const returnUrl = gameButton.getAttribute('data-return-url') || '/games/';
+        const registrationUrl = `/register/index.html?src=${encodeURIComponent(path)}&title=${encodeURIComponent(title)}&back=${encodeURIComponent(returnUrl)}`;
+        window.location.href = registrationUrl;
+      } else {
+        window.location.href = '/register/';
+      }
+    });
+  }
+
   document.querySelectorAll('.play-demo-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const path = btn.getAttribute('data-game-path');
-      const card = btn.closest('article');
-      const gameTitle = card ? (card.querySelector('h2')?.textContent || 'Game Demo') : 'Game Demo';
+      const path = btn.getAttribute('data-src');
+      const title = btn.getAttribute('data-game-title') || 'Game Demo';
+      if (!path) return;
 
-      // Logged in users: no limit
       if (isLoggedIn()) {
-        openDemo(path, gameTitle);
+        openDemo(path, title);
         return;
       }
 
-      // Guests: check limit
-      const current = getDemoCount();
-      if (current >= DEMO_LIMIT) {
+      const current = incDemoCount();
+      if (current > DEMO_LIMIT) {
+        document.querySelectorAll('.play-demo-btn').forEach(b => b.removeAttribute('data-intent'));
+        btn.setAttribute('data-intent', 'pending');
         showRegisterGate();
         return;
       }
 
-      // Allow and increment
-      incDemoCount();
-      openDemo(path, gameTitle);
+      openDemo(path, title);
     });
   });
+
+  if (isLoggedIn()) {
+    document.querySelectorAll('.overlay-blocker').forEach(el => el.classList.add('hidden'));
+  }
 });
+/*
+  Fix: Always show the Register Free modal if the user exceeds the demo limit,
+  regardless of which Play Free button (3rd, 4th, etc.) is clicked.
+  The modal will always use the correct game info for the button clicked.
+*/
+
+document.querySelectorAll('.play-demo-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const path = btn.getAttribute('data-src');
+    const title = btn.getAttribute('data-game-title') || 'Game Demo';
+    if (!path) return;
+
+    if (isLoggedIn()) {
+      openDemo(path, title);
+      return;
+    }
+
+    const current = incDemoCount();
+    if (current > DEMO_LIMIT) {
+      // Remove intent from all, set only for this button
+      document.querySelectorAll('.play-demo-btn').forEach(b => b.removeAttribute('data-intent'));
+      btn.setAttribute('data-intent', 'pending');
+      // Store the info on the modal for later use
+      registerGateModal.setAttribute('data-src', path);
+      registerGateModal.setAttribute('data-game-title', title);
+      registerGateModal.setAttribute('data-return-url', window.location.pathname);
+      showRegisterGate();
+      return;
+    }
+
+    openDemo(path, title);
+  });
+});
+
+if (confirmRegisterBtn) {
+  confirmRegisterBtn.addEventListener('click', () => {
+    // Use info from modal attributes
+    const path = registerGateModal.getAttribute('data-src');
+    const title = registerGateModal.getAttribute('data-game-title');
+    const returnUrl = registerGateModal.getAttribute('data-return-url') || '/games/';
+    if (path && title) {
+      const registrationUrl = `/register/index.html?src=${encodeURIComponent(path)}&title=${encodeURIComponent(title)}&back=${encodeURIComponent(returnUrl)}`;
+      window.location.href = registrationUrl;
+    } else {
+      window.location.href = '/register/';
+    }
+  });
+}

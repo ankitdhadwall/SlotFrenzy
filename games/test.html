@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Test</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const playButtons = document.querySelectorAll(".play-demo-btn");
+      const registerGateModal = document.getElementById("registerGateModal");
+      const registerGateBackdrop = document.getElementById("registerGateBackdrop");
+      const registerGateClose = document.getElementById("registerGateClose");
+      const registerNowBtn = document.getElementById("registerNowBtn");
+
+      playButtons.forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          event.preventDefault(); // Block default link
+
+          const isRegistered = localStorage.getItem("isRegistered") === "true";
+          let demoCount = parseInt(localStorage.getItem("demoCount") || "0");
+
+          if (!isRegistered && demoCount >= 2) {
+            console.log("Not registered & demo limit reached");
+            registerGateModal.classList.remove("hidden");
+            registerGateBackdrop.classList.remove("hidden");
+            return;
+          }
+
+          if (!isRegistered) {
+            demoCount++;
+            localStorage.setItem("demoCount", demoCount.toString());
+            console.log("Incremented demoCount:", demoCount);
+          }
+
+          const title = encodeURIComponent(btn.dataset.gameTitle || "");
+          const src = encodeURIComponent(btn.dataset.src || "");
+          const back = encodeURIComponent(btn.dataset.returnUrl || "/games");
+
+          console.log("Redirecting to game with title:", title);
+          window.location.href = `../games/game/index.html?title=${title}&src=${src}&back=${back}`;
+        });
+      });
+
+      registerGateClose.addEventListener("click", () => {
+        registerGateModal.classList.add("hidden");
+        registerGateBackdrop.classList.add("hidden");
+      });
+
+      registerGateBackdrop.addEventListener("click", () => {
+        registerGateModal.classList.add("hidden");
+        registerGateBackdrop.classList.add("hidden");
+      });
+
+      registerNowBtn.addEventListener("click", () => {
+        registerGateModal.classList.add("hidden");
+        registerGateBackdrop.classList.add("hidden");
+        window.location.href = "/register/";
+      });
+    });
+  </script>
+  <style>
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Game Card -->
+  <a href="#"
+    class="play-demo-btn"
+    data-game-title="Wanted"
+    data-src="https://example.com/demo-game"
+    data-return-url="/games/">
+    ▶️ PLAY FREE
+  </a>
+
+  <!-- Modal -->
+  <div id="registerGateBackdrop" class="fixed inset-0 bg-black/70 z-40 hidden"></div>
+  <div id="registerGateModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full text-center">
+      <h3 class="text-xl font-semibold mb-4">Create an account to continue</h3>
+      <p class="text-gray-600 mb-6">You've used your free plays. Register now to unlock all games.</p>
+      <button id="registerNowBtn" class="bg-pink-500 text-white px-6 py-2 rounded-full font-semibold">
+        Register Free
+      </button>
+      <button id="registerGateClose" class="mt-4 text-sm text-gray-500 hover:text-gray-700">Close</button>
+    </div>
+  </div>
+
+</body>
+</html>

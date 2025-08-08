@@ -112,9 +112,27 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script>
-  // Simulate registration success
-  localStorage.setItem("isRegistered", "true");
-  window.location.href = "/games/"; // or wherever you want to redirect
+  // Wait for registration to complete (you can wrap this inside your form submission callback)
+  document.addEventListener('DOMContentLoaded', function () {
+    // Example: Replace this with your actual "registration complete" trigger
+    const registerButton = document.getElementById('completeRegistration');
+
+    if (registerButton) {
+      registerButton.addEventListener('click', function () {
+        // Retrieve game params from query string
+        const params = new URLSearchParams(window.location.search);
+        const gameUrl = params.get('src');
+        const gameTitle = params.get('title');
+        const backUrl = params.get('back');
+
+        // Mark user as registered
+        localStorage.setItem('isRegistered', 'true');
+
+        // Redirect back to the game page
+        window.location.href = `/games/game/index.html?title=${encodeURIComponent(gameTitle)}&src=${encodeURIComponent(gameUrl)}&back=${encodeURIComponent(backUrl)}`;
+      });
+    }
+  });
 </script>
 
 <script>
