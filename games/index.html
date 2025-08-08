@@ -191,7 +191,7 @@
     </div>
   </article>
 
-  <!-- 2) Wanted -->
+  <!-- 3) Wanted -->
 <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
   <img src="../assets/images/wanted-dead-or-a-whild.png" alt="Wanted" class="w-full h-48 object-cover">
   <div class="p-6 space-y-2">
@@ -204,6 +204,7 @@
       <!-- <a href="#" -->
       <button type="button"
         class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        onclick="handlePlayClick(event, 2)"
         data-game-title="Wanted"
         data-src="https://d3le5997hik6o.cloudfront.net/1067/1.67.0/index.html?language=en&channel=desktop&gameid=1067&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
         data-return-url="/games/">
@@ -220,7 +221,8 @@
   </div>
 </article>
 
-    <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+
+    <!-- <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/The-Dog-House-Dog-or-Alive.png" alt="The Dog House Dog or Alive" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">The Dog House Dog or Alive</h2>
@@ -228,7 +230,7 @@
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
         <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
       </div>
-    </article>
+    </article> -->
 
     <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Stack-em.png" alt="Stack em" class="w-full h-48 object-cover">
@@ -236,7 +238,22 @@
         <h2 class="text-lg font-semibold">Stack'Em</h2>
         <p class="text-xs text-teal-400">HACKSAW GAMING</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+        <!-- Button + Overlay Container -->
+    <div class="relative inline-block">
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        onclick="handlePlayClick(event, 3)"
+        data-game-title="Stack'Em"
+        data-src="https://d3le5997hik6o.cloudfront.net/1084/1.64.0/index.html?language=en&channel=desktop&gameid=1084&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+      <!-- This overlay is shown only if not registered -->
+      <div
+        class="overlay-blocker hidden absolute inset-0 bg-black/60 rounded-full flex items-center justify-center text-xs text-white cursor-pointer"
+        data-tooltip="Register first to access or play this game"
+        title="Register first to access or play this game">
+      </div>
+    </div>
       </div>
     </article>
 

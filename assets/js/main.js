@@ -196,17 +196,36 @@ document.addEventListener('DOMContentLoaded', () => {
     return !!localStorage.getItem('username') || localStorage.getItem('isRegistered') === 'true';
   }
 
+  function getPlayedGames() {
+    const raw = localStorage.getItem('playedGamePaths') || '[]';
+    try {
+      return JSON.parse(raw);
+    } catch {
+      return [];
+    }
+  }
+
+  function hasPlayed(path) {
+    const played = getPlayedGames();
+    return played.includes(path);
+  }
+
+  function addPlayedGame(path) {
+    const played = getPlayedGames();
+    if (!played.includes(path)) {
+      played.push(path);
+      localStorage.setItem('playedGamePaths', JSON.stringify(played));
+    }
+  }
+
   function getDemoCount() {
-    return parseInt(localStorage.getItem('demoCount') || '0', 10);
+    return getPlayedGames().length;
   }
 
-  function incDemoCount() {
-    const next = getDemoCount() + 1;
-    localStorage.setItem('demoCount', String(next));
-    return next;
-  }
-
-  function showRegisterGate() {
+  function showRegisterGate(path, title, returnUrl) {
+    registerGateModal.setAttribute('data-src', path);
+    registerGateModal.setAttribute('data-game-title', title);
+    registerGateModal.setAttribute('data-return-url', returnUrl);
     registerGateModal.classList.remove('hidden');
     registerGateBackdrop.classList.remove('hidden');
     document.body.classList.add('overflow-hidden');
@@ -224,16 +243,16 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = url;
   }
 
+  // Modal backdrop & button handling
   if (registerGateBackdrop) registerGateBackdrop.addEventListener('click', hideRegisterGate);
   if (closeRegisterBtn) closeRegisterBtn.addEventListener('click', hideRegisterGate);
 
   if (confirmRegisterBtn) {
     confirmRegisterBtn.addEventListener('click', () => {
-      const gameButton = document.querySelector('.play-demo-btn[data-intent="pending"]');
-      if (gameButton) {
-        const path = gameButton.getAttribute('data-src');
-        const title = gameButton.getAttribute('data-game-title');
-        const returnUrl = gameButton.getAttribute('data-return-url') || '/games/';
+      const path = registerGateModal.getAttribute('data-src');
+      const title = registerGateModal.getAttribute('data-game-title');
+      const returnUrl = registerGateModal.getAttribute('data-return-url') || '/games/';
+      if (path && title) {
         const registrationUrl = `/register/index.html?src=${encodeURIComponent(path)}&title=${encodeURIComponent(title)}&back=${encodeURIComponent(returnUrl)}`;
         window.location.href = registrationUrl;
       } else {
@@ -242,45 +261,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  document.querySelectorAll('.play-demo-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const path = btn.getAttribute('data-src');
-      const title = btn.getAttribute('data-game-title') || 'Game Demo';
-      if (!path) return;
+  // Main game click logic
+  window.handlePlayClick = function (event, idx) {
+    event.preventDefault();
 
-      if (isLoggedIn()) {
-        openDemo(path, title);
-        return;
-      }
-
-      const current = incDemoCount();
-      if (current > DEMO_LIMIT) {
-        document.querySelectorAll('.play-demo-btn').forEach(b => b.removeAttribute('data-intent'));
-        btn.setAttribute('data-intent', 'pending');
-        showRegisterGate();
-        return;
-      }
-
-      openDemo(path, title);
-    });
-  });
-
-  if (isLoggedIn()) {
-    document.querySelectorAll('.overlay-blocker').forEach(el => el.classList.add('hidden'));
-  }
-});
-/*
-  Fix: Always show the Register Free modal if the user exceeds the demo limit,
-  regardless of which Play Free button (3rd, 4th, etc.) is clicked.
-  The modal will always use the correct game info for the button clicked.
-*/
-
-document.querySelectorAll('.play-demo-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
+    const btn = event.currentTarget;
     const path = btn.getAttribute('data-src');
     const title = btn.getAttribute('data-game-title') || 'Game Demo';
+    const returnUrl = window.location.pathname;
+
     if (!path) return;
 
     if (isLoggedIn()) {
@@ -288,34 +277,26 @@ document.querySelectorAll('.play-demo-btn').forEach(btn => {
       return;
     }
 
-    const current = incDemoCount();
-    if (current > DEMO_LIMIT) {
-      // Remove intent from all, set only for this button
-      document.querySelectorAll('.play-demo-btn').forEach(b => b.removeAttribute('data-intent'));
-      btn.setAttribute('data-intent', 'pending');
-      // Store the info on the modal for later use
-      registerGateModal.setAttribute('data-src', path);
-      registerGateModal.setAttribute('data-game-title', title);
-      registerGateModal.setAttribute('data-return-url', window.location.pathname);
-      showRegisterGate();
+    const demoCount = getDemoCount();
+
+    // If limit exceeded and game not played before, block
+    if ((demoCount >= DEMO_LIMIT) && !hasPlayed(path)) {
+      showRegisterGate(path, title, returnUrl);
       return;
     }
 
+    // Allow if already played (replay), or within demo limit
+    if (!hasPlayed(path)) {
+      addPlayedGame(path);
+    }
+
     openDemo(path, title);
-  });
+  };
+
+  // Hide overlay blockers for logged-in users
+  if (isLoggedIn()) {
+    document.querySelectorAll('.overlay-blocker').forEach(el => el.classList.add('hidden'));
+  }
 });
 
-if (confirmRegisterBtn) {
-  confirmRegisterBtn.addEventListener('click', () => {
-    // Use info from modal attributes
-    const path = registerGateModal.getAttribute('data-src');
-    const title = registerGateModal.getAttribute('data-game-title');
-    const returnUrl = registerGateModal.getAttribute('data-return-url') || '/games/';
-    if (path && title) {
-      const registrationUrl = `/register/index.html?src=${encodeURIComponent(path)}&title=${encodeURIComponent(title)}&back=${encodeURIComponent(returnUrl)}`;
-      window.location.href = registrationUrl;
-    } else {
-      window.location.href = '/register/';
-    }
-  });
-}
+
