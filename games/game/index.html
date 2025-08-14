@@ -6,7 +6,7 @@
 <title>SlotFrenzy Games – Play Free Social Casino Slots</title>
 <meta name="description" content="Join SlotFrenzy to play exciting social casino games, get 5,000 free coins on signup, and enjoy exclusive features. No real money involved.">
 <meta name="keywords" content="free slot games, social casino games, online slots, virtual slot machines, play for fun, slot tournaments, top slot games, new slots weekly, SlotFrenzy games">
-<link rel="canonical" href="https://slotfrenzy.org/games">
+<link rel="canonical" href="https://slotfrenzy.org/games/game/">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -116,17 +116,17 @@
       <div id="userInfo" class="hidden flex items-center space-x-3">
         <span id="welcomeText" class="text-gray-200 text-sm"></span>
         <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
-        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+        <button id="logoutBtn" class="border border-pink-500/40 text-base px-3 py-1 rounded-full hover:scale-105 transition">Logout</button>
       </div>
     </nav>
     <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
   </div>
 
   <div id="mobile-menu" class="hidden bg-black flex flex-col p-4 space-y-2 md:hidden">
-    <a href="/" class="nav-link">Home</a>
-    <a href="/games/" class="nav-link">Games</a>
-    <a href="/responsibleGaming/" class="nav-link">Responsible Gaming</a>
-    <a href="/contact/" class="nav-link">Contact</a>
+    <a href="/" class="nav-link flex">Home</a>
+    <a href="/games/" class="nav-link flex">Games</a>
+    <a href="/responsibleGaming/" class="nav-link flex">Responsible Gaming</a>
+    <a href="/contact/" class="nav-link flex">Contact</a>
 
     <!-- Before login -->
     <a id="mobileLoginLink" href="/login/" class="bg-gradient-to-r from-pink-500 to-teal-400 px-4 py-2 rounded-full shadow">Login</a>
@@ -135,7 +135,7 @@
     <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
       <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
       <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
-      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      <button id="mobileLogoutBtn" class="border border-pink-500/40 text-base px-3 py-1 rounded-full hover:scale-105 transition">Logout</button>
     </div>
   </div>
 </header>
@@ -145,10 +145,9 @@
     <h1 id="gameTitle" class="text-xl font-bold mb-4"></h1>
     <iframe id="gameFrame" class="w-full h-[75vh] rounded-xl border-2 overflow-auto border-teal-500 shadow-lg" allowfullscreen scrolling="yes"></iframe>
     <div class="mt-4">
-      <a href="/games/index.html"
-         class="inline-block mt-2 px-4 py-2 text-sm bg-gray-800 hover:bg-gray-700 rounded-full transition">
+      <button id="backBtn" class="mt-4 bg-gradient-to-r from-pink-500 to-teal-400 text-white px-4 py-2 rounded-full shadow hover:scale-105 transition">
          ⬅️ Return to Games
-      </a>
+     </button>
     </div>
   </main>
 
@@ -164,46 +163,59 @@
 </footer>
 
 
-<script src="../../assets/js/main.js"></script>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    let title = urlParams.get('title');
-    let src = urlParams.get('src');
-    let backUrl = urlParams.get('back');
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const gameTitle = params.get('title') || 'Game';
+  const gameSrc = params.get('src') || './index.html';
+  const backUrl = params.get('back') || '/games/';
+  const registerGateModal = document.getElementById('registerGateModal');
 
-    // If we have params in the URL, store them
-    if (title && src) {
-      sessionStorage.setItem('gameTitle', title);
-      sessionStorage.setItem('gameSrc', decodeURIComponent(src));
-    }
+  const titleEl = document.getElementById('gameTitle');
+  const iframeEl = document.getElementById('gameFrame');
+  const backBtn = document.getElementById('backBtn');
 
-    if (backUrl) {
-      sessionStorage.setItem('gameBack', decodeURIComponent(backUrl));
-    }
+  const isRegistered = localStorage.getItem('isRegistered') === 'true';
+  let demoPlayCount = parseInt(localStorage.getItem('demoPlayCount') || '0', 10);
+  const DEMO_LIMIT = 2;
 
-    // Use values from sessionStorage if not in URL
-    title = title || sessionStorage.getItem('gameTitle');
-    src = src || sessionStorage.getItem('gameSrc');
-    backUrl = backUrl || sessionStorage.getItem('gameBack');
+  // ✅ Increment demoPlayCount only when iframe is actually loaded
+  if (!isRegistered) {
+    demoPlayCount++;
+    localStorage.setItem('demoPlayCount', demoPlayCount.toString());
+  }
 
-    if (title && src) {
-      document.getElementById('gameTitle').textContent = title;
-      document.getElementById('gameFrame').src = src;
+  // ✅ Show modal if user reached limit
+  if (!isRegistered && demoPlayCount > DEMO_LIMIT) {
+    if (registerGateModal) {
+      registerGateModal.classList.remove('hidden');
     } else {
-      document.getElementById('gameFrame').outerHTML = "<p class='text-white text-center'>Game not found</p>";
+      window.location.href = `/register/index.html?title=${encodeURIComponent(gameTitle)}&src=${encodeURIComponent(gameSrc)}&back=${encodeURIComponent(backUrl)}`;
     }
+    return;
+  }
 
-    if (backUrl) {
-      const returnBtn = document.querySelector('a[href="/games/index.html"]');
-      if (returnBtn) returnBtn.href = backUrl;
-    }
+  // Set game title
+  if (titleEl) titleEl.textContent = decodeURIComponent(gameTitle);
 
-    // ✅ Clean the query string from the address bar
-    window.history.replaceState({}, document.title, window.location.pathname);
+  // Load iframe
+  if (iframeEl && gameSrc) iframeEl.setAttribute('src', decodeURIComponent(gameSrc));
+  else if (iframeEl) iframeEl.innerHTML = '<p class="text-white text-center mt-4">Game URL not found.</p>';
+
+  // Back button
+  if (backBtn) backBtn.addEventListener('click', () => {
+    window.location.href = backUrl;
   });
+
+  // Save last played game
+  sessionStorage.setItem('lastGameTitle', gameTitle);
+  sessionStorage.setItem('lastGameSrc', gameSrc);
+  sessionStorage.setItem('lastGameBack', backUrl);
+});
 </script>
 
+<script src="../../assets/js/main.js"></script>
 
 </body>
 </html>

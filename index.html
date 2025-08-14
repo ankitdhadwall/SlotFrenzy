@@ -32,7 +32,7 @@
       <div id="userInfo" class="hidden flex items-center space-x-3">
         <span id="welcomeText" class="text-gray-200 text-sm"></span>
         <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
-        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+        <button id="logoutBtn" class="border border-pink-500/40 text-base px-3 py-1 rounded-full hover:scale-105 transition">Logout</button>
       </div>
     </nav>
     <button onclick="toggleMenu()" class="md:hidden text-2xl mobile-menuicon">☰</button>
@@ -51,7 +51,7 @@
     <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
       <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
       <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
-      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      <button id="mobileLogoutBtn" class="border border-pink-500/40 text-base px-3 py-1 rounded-full hover:scale-105 transition">Logout</button>
     </div>
   </div>
 </header>
@@ -160,16 +160,13 @@
               <p class="text-sm text-teal-400 font-semibold">HACKSAW GAMING</p>
               <p class="text-gray-400 text-sm">Dive into a world of cascading wins and big multipliers!</p>
               <div class="flex gap-3 mt-4">
-                <!-- <a href="javascript:void(0)" class="inline-flex items-center bg-gradient-to-r from-pink-500 to-teal-400 text-white text-sm px-4 py-2 rounded-full font-semibold shadow animate-pulse hover:scale-105 transition">
-                  ▶️ PLAY NOW
-                </a> -->
-                <a href="../games/game/index.html"
+        <button type="button"
          class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
          data-game-title="Gladiator Legends"
          data-src="https://d3le5997hik6o.cloudfront.net/1160/1.47.1/index.html?language=en&channel=desktop&gameid=1160&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
          data-return-url="/games/">
          ▶️ PLAY FREE
-      </a>
+        </button>
                 <span class="bg-pink-500 text-white text-xs px-2 py-2 rounded-full">FREE</span>
               </div>
             </div>
@@ -177,20 +174,23 @@
 
           <!-- Slide 2 -->
           <div class="min-w-full bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg border border-pink-500/30 hover:scale-[1.02] transition">
-            <img src="assets/images/Zeus-vs-Hades.png" alt="Zeus vs Hades" class="w-full h-[22rem]">
+            <img src="assets/images/Greedy-Alice.png" alt="Greedy Alice" class="w-full h-[22rem]">
             <div class="p-6 space-y-3">
-              <h4 class="text-xl font-bold text-white">Zeus vs Hades</h4>
-              <p class="text-sm text-teal-400 font-semibold">PRAGMATIC PLAY</p>
+              <h4 class="text-xl font-bold text-white">Greedy Alice</h4>
+              <p class="text-sm text-teal-400 font-semibold">PETER AND SONS</p>
               <p class="text-gray-400 text-sm">Classic card thrills with dice bonuses and multipliers.</p>
               <div class="flex gap-3 mt-4">
-                <a href="javascript:void(0)" class="inline-flex items-center bg-gradient-to-r from-pink-500 to-teal-400 text-white text-sm px-4 py-2 rounded-full font-semibold shadow animate-pulse hover:scale-105 transition">
-                  ▶️ PLAY NOW
-                </a>
+              <button type="button"
+              class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+              data-game-title="Greedy Alice"
+              data-src="https://cdn-demo.spinart.cloud/peterandsons/launcher/index.html?server=https%3A%2F%2Fdemo.spinart.cloud&wallet=demo&operator=demo&gameCode=greedy-alice&key=1742426975596&language=en"
+              data-return-url="/games/">
+              ▶️ PLAY FREE</button>
                 <span class="bg-pink-500 text-white text-xs px-2 py-2 rounded-full">FREE</span>
               </div>
             </div>
           </div>
-
+          <!-- Slide 3 -->
           <div class="min-w-full bg-gray-800/80 rounded-2xl overflow-hidden shadow-lg border border-pink-500/30 hover:scale-[1.02] transition">
             <img src="assets/images/The-Crypt.png" alt="The Crypt" class="w-full h-[22rem]">
             <div class="p-6 space-y-3">
@@ -198,9 +198,12 @@
               <p class="text-sm text-teal-400 font-semibold">NOLIMIT CITY</p>
               <p class="text-gray-400 text-sm">Classic card thrills with dice bonuses and multipliers.</p>
               <div class="flex gap-3 mt-4">
-                <a href="javascript:void(0)" class="inline-flex items-center bg-gradient-to-r from-pink-500 to-teal-400 text-white text-sm px-4 py-2 rounded-full font-semibold shadow animate-pulse hover:scale-105 transition">
-                  ▶️ PLAY NOW
-                </a>
+              <button type="button"
+              class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+              data-game-title="The Crypt"
+              data-src="https://casino.nolimitcdn.com/loader/evo.html?device=desktop&game=TheCrypt&language=en-GB&operator=HUB88GMDM0000001&clock=false&hideExitButton=true&showHomeButton=false&playMode=demo&depositEvent=true&lobbyEvent=true&currencyCode=EUR&currencySymbol=%E2%82%AC&extra=%7B%22licenseePlayerId%22%3A%22qs7hbomgxeaiyy4n%22%2C%22currency%22%3A%22EUR%22%2C%22evo_token%22%3A%22eyJraWQiOiIxNzM5NDQ4NDAxOTYwIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJjdXIiOiJFVVIiLCJndHAiOiJ0aGVjcnlwdCIsImp1ciI6IkNXIiwiaGllcmFyY2h5IjoiW2h1Yjg4Z21kbTAwMDAwMDFdIiwibWlkIjoiVGhlQ3J5cHQiLCJlcGlkIjoicGxheWluZ2d1ZXN0MDAxNiIsInBpZCI6InFzN2hib21neGVhaXl5NG4iLCJleHAiOjE3NTU0MzI1NzcsInRpZCI6InRoZWNyeXB0MDAwMDAwMDAiLCJjaWQiOiJodWI4OGdtZG0wMDAwMDAxIiwic2lkIjoicXM3aGJvbWd4ZWFpeXk0bnRjdWh5cnN0aDNudGhwNTIwMDAxMWZiMiJ9.JlsctfJyUKj3huC1kR5A2k6VeFbNv9GgmF_vOl6-Dq67Tn-As-2bfWj6AdYf6O0gPX1xG1NxwC6hjoOjw_GurQ%22%2C%22table_id%22%3A%22thecrypt00000000%22%2C%22table_name%22%3A%22The%20Crypt%22%2C%22screenName%22%3A%22Guest%22%2C%22externalPlayerId%22%3A%22playingguest0016%22%7D&serverHost=https%3A%2F%2Fcasino.nolimitcity.com"
+              data-return-url="/games/">
+              ▶️ PLAY FREE</button>
                 <span class="bg-pink-500 text-white text-xs px-2 py-2 rounded-full">FREE</span>
               </div>
             </div>
@@ -226,13 +229,13 @@
           </div>
           <div class="flex gap-2">
             <!-- <a href="javascript:void(0)" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse hover:scale-105 transition">Play</a> -->
-            <a href="../games/game/index.html"
+          <button type="button"
          class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
          data-game-title="Gladiator Legends"
          data-src="https://d3le5997hik6o.cloudfront.net/1160/1.47.1/index.html?language=en&channel=desktop&gameid=1160&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
          data-return-url="/games/">
          ▶️ PLAY FREE
-      </a>
+      </button>
             <!-- <span class="bg-pink-500 text-white text-[10px] px-2 py-1 rounded-full">FREE</span> -->
           </div>
         </div>
@@ -240,10 +243,15 @@
         <!-- Card 2 -->
         <div class="flex justify-between items-center bg-black px-4 py-3 rounded-xl border border-pink-500/20 hover:border-pink-500/40 shadow-md hover:shadow-pink-500/30 transition hover:scale-105">
           <div>
-            <p class="text-white font-semibold text-sm">Zevs vs Hades</p>
-            <p class="text-teal-400 text-xs">PRAGMATIC PLAY</p>
+            <p class="text-white font-semibold text-sm">Greedy Alice</p>
+            <p class="text-teal-400 text-xs">PETER AND SONS</p>
           </div>
-          <a href="javascript:void(0)" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse hover:scale-105 transition">Play</a>
+          <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        data-game-title="Greedy Alice"
+        data-src="https://cdn-demo.spinart.cloud/peterandsons/launcher/index.html?server=https%3A%2F%2Fdemo.spinart.cloud&wallet=demo&operator=demo&gameCode=greedy-alice&key=1742426975596&language=en"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
         </div>
 
         <!-- Card 3 -->
@@ -252,7 +260,12 @@
             <p class="text-white font-semibold text-sm">The Crypt</p>
             <p class="text-teal-400 text-xs">NOLIMIT CITY</p>
           </div>
-          <a href="javascript:void(0)" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse hover:scale-105 transition">Play</a>
+          <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        data-game-title="The Crypt"
+        data-src="https://casino.nolimitcdn.com/loader/evo.html?device=desktop&game=TheCrypt&language=en-GB&operator=HUB88GMDM0000001&clock=false&hideExitButton=true&showHomeButton=false&playMode=demo&depositEvent=true&lobbyEvent=true&currencyCode=EUR&currencySymbol=%E2%82%AC&extra=%7B%22licenseePlayerId%22%3A%22qs7hbomgxeaiyy4n%22%2C%22currency%22%3A%22EUR%22%2C%22evo_token%22%3A%22eyJraWQiOiIxNzM5NDQ4NDAxOTYwIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJjdXIiOiJFVVIiLCJndHAiOiJ0aGVjcnlwdCIsImp1ciI6IkNXIiwiaGllcmFyY2h5IjoiW2h1Yjg4Z21kbTAwMDAwMDFdIiwibWlkIjoiVGhlQ3J5cHQiLCJlcGlkIjoicGxheWluZ2d1ZXN0MDAxNiIsInBpZCI6InFzN2hib21neGVhaXl5NG4iLCJleHAiOjE3NTU0MzI1NzcsInRpZCI6InRoZWNyeXB0MDAwMDAwMDAiLCJjaWQiOiJodWI4OGdtZG0wMDAwMDAxIiwic2lkIjoicXM3aGJvbWd4ZWFpeXk0bnRjdWh5cnN0aDNudGhwNTIwMDAxMWZiMiJ9.JlsctfJyUKj3huC1kR5A2k6VeFbNv9GgmF_vOl6-Dq67Tn-As-2bfWj6AdYf6O0gPX1xG1NxwC6hjoOjw_GurQ%22%2C%22table_id%22%3A%22thecrypt00000000%22%2C%22table_name%22%3A%22The%20Crypt%22%2C%22screenName%22%3A%22Guest%22%2C%22externalPlayerId%22%3A%22playingguest0016%22%7D&serverHost=https%3A%2F%2Fcasino.nolimitcity.com"
+        data-return-url="/games/">
+        ▶️ PLAY</button>
         </div>
       </div>
     </div>
@@ -437,6 +450,21 @@
   </div>
 </div>
 
+<div id="registerGateBackdrop" class="fixed inset-0 bg-black bg-opacity-70 hidden z-40"></div>
+
+<!-- Modal -->
+<div id="registerGateModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-gray-900 p-6 rounded-lg text-center max-w-md w-full">
+    <h3 class="text-lg font-bold mb-4 text-center">Register to Play</h3>
+    <p class="mb-4 text-center text-sm">You need to register to access full games. Click below to continue.</p>
+     <div class="flex justify-center gap-4">
+      <button id="confirmRegister" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white px-3 py-1 rounded-full text-xs font-semibold shadow hover:scale-105 transition">Register Now</button>
+    <button id="closeRegisterModal" class="border border-pink-500/40 text-xs px-3 py-1 rounded-full hover:scale-105 transition">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
 <!-- JS -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/diceParticles.js"></script>
@@ -456,7 +484,7 @@
   }
 </script>
 
-<script>
+<!-- <script>
   document.addEventListener("DOMContentLoaded", () => {
     const demoButtons = document.querySelectorAll(".play-demo-btn");
 
@@ -478,7 +506,7 @@
       });
     });
   });
-</script>
+</script> -->
 
 </body>
 </html>

@@ -40,43 +40,6 @@
     box-shadow: 0 4px 30px rgba(0,0,0,0.3);
   }
 
-  /* Dice canvas */
-  canvas#diceCanvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0.25;
-  }
-    .overlay-blocker {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-weight: bold;
-    z-index: 20;
-    cursor: pointer;
-    border-radius: 1rem;
-  }
-
-  .overlay-blocker:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 10px;
-    background: #111;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    z-index: 25;
-  }
-
 
 </style>
 </head>
@@ -101,7 +64,7 @@
       <div id="userInfo" class="hidden flex items-center space-x-3">
         <span id="welcomeText" class="text-gray-200 text-sm"></span>
         <span id="coinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
-        <button id="logoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+        <button id="logoutBtn" class="border border-pink-500/40 text-base px-3 py-1 rounded-full hover:scale-105 transition">Logout</button>
       </div>
     </nav>
     <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
@@ -120,7 +83,7 @@
     <div id="mobileUserInfo" class="hidden flex flex-col items-start space-y-2 mt-2">
       <span id="mobileWelcomeText" class="text-gray-200 text-sm"></span>
       <span id="mobileCoinCounter" class="bg-gradient-to-r from-pink-500 to-teal-400 text-black font-semibold px-3 py-1 rounded-full shadow animate-pulse text-sm">0 Coins</span>
-      <button id="mobileLogoutBtn" class="text-sm text-gray-300 hover:text-pink-400 transition">Logout</button>
+      <button id="mobileLogoutBtn" class="border border-pink-500/40 text-base px-3 py-1 rounded-full hover:scale-105 transition">Logout</button>
     </div>
   </div>
 </header>
@@ -162,14 +125,13 @@
       <h2 class="text-lg font-semibold">Gladiator Legends</h2>
       <p class="text-xs text-teal-400">HACKSAW GAMING</p>
       <p class="text-gray-400 text-sm">Spin the dragon reels for legendary wins!</p>
-      <a href="../games/game/index.html"
+      <button type="button"
          class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
          data-game-title="Gladiator Legends"
-         onclick="handlePlayClick(event, 0)"
          data-src="https://d3le5997hik6o.cloudfront.net/1160/1.47.1/index.html?language=en&channel=desktop&gameid=1160&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
          data-return-url="/games/">
          ▶️ PLAY FREE
-      </a>
+      </button>
     </div>
   </article>
 
@@ -180,14 +142,14 @@
       <h2 class="text-lg font-semibold">Le Bandit</h2>
       <p class="text-xs text-teal-400">HACKSAW GAMING</p>
       <p class="text-gray-400 text-sm">Roll dice & play timeless card games in style!</p>
-      <a href="../games/game/index.html"
+      <button type="button"
          class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
-         onclick="handlePlayClick(event, 1)"
+         
          data-game-title="Le Bandit"
          data-src="https://d3le5997hik6o.cloudfront.net/1309/1.19.1/index.html?language=en&channel=desktop&gameid=1309&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
          data-return-url="/games/">
          ▶️ PLAY FREE
-      </a>
+     </button>
     </div>
   </article>
 
@@ -198,39 +160,15 @@
     <h2 class="text-lg font-semibold">Wanted</h2>
     <p class="text-xs text-teal-400">HACKSAW GAMING</p>
     <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-
-    <!-- Button + Overlay Container -->
-    <div class="relative inline-block">
-      <!-- <a href="#" -->
       <button type="button"
         class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
-        onclick="handlePlayClick(event, 2)"
+        
         data-game-title="Wanted"
         data-src="https://d3le5997hik6o.cloudfront.net/1067/1.67.0/index.html?language=en&channel=desktop&gameid=1067&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
         data-return-url="/games/">
         ▶️ PLAY FREE</button>
-      <!-- </a> -->
-
-      <!-- This overlay is shown only if not registered -->
-      <div
-        class="overlay-blocker hidden absolute inset-0 bg-black/60 rounded-full flex items-center justify-center text-xs text-white cursor-pointer"
-        data-tooltip="Register first to access or play this game"
-        title="Register first to access or play this game">
-      </div>
-    </div>
   </div>
 </article>
-
-
-    <!-- <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
-      <img src="../assets/images/The-Dog-House-Dog-or-Alive.png" alt="The Dog House Dog or Alive" class="w-full h-48 object-cover">
-      <div class="p-6 space-y-2">
-        <h2 class="text-lg font-semibold">The Dog House Dog or Alive</h2>
-        <p class="text-xs text-teal-400">HACKSAW GAMING</p>
-        <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
-      </div>
-    </article> -->
 
     <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Stack-em.png" alt="Stack em" class="w-full h-48 object-cover">
@@ -238,141 +176,316 @@
         <h2 class="text-lg font-semibold">Stack'Em</h2>
         <p class="text-xs text-teal-400">HACKSAW GAMING</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <!-- Button + Overlay Container -->
-    <div class="relative inline-block">
       <button type="button"
         class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
-        onclick="handlePlayClick(event, 3)"
+       
         data-game-title="Stack'Em"
         data-src="https://d3le5997hik6o.cloudfront.net/1084/1.64.0/index.html?language=en&channel=desktop&gameid=1084&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
         data-return-url="/games/">
         ▶️ PLAY FREE</button>
-      <!-- This overlay is shown only if not registered -->
-      <div
-        class="overlay-blocker hidden absolute inset-0 bg-black/60 rounded-full flex items-center justify-center text-xs text-white cursor-pointer"
-        data-tooltip="Register first to access or play this game"
-        title="Register first to access or play this game">
       </div>
-    </div>
+    </article>
+
+    <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+      <img src="../assets/images/Donny-Dough.png" alt="Donny Dough" class="w-full h-48 object-cover">
+      <div class="p-6 space-y-2">
+        <h2 class="text-lg font-semibold">Donny Dough</h2>
+        <p class="text-xs text-teal-400">HACKSAW GAMING</p>
+        <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+       
+        data-game-title="Donny Dough"
+        data-src="https://d3le5997hik6o.cloudfront.net/1530/1.35.5/index.html?language=en&channel=desktop&gameid=1530&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+      </div>
+      </article>
+
+      <article data-type="Hacksaw" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+        <img src="../assets/images/Double-Rainbow.png" alt="Double Rainbow" class="w-full h-48 object-cover">
+        <div class="p-6 space-y-2">
+          <h2 class="text-lg font-semibold">Double Rainbow</h2>
+          <p class="text-xs text-teal-400">HACKSAW GAMING</p>
+          <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
+        <button type="button"
+          class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+         
+          data-game-title="Double Rainbow"
+          data-src="https://d3le5997hik6o.cloudfront.net/1144/1.45.3/index.html?language=en&channel=desktop&gameid=1144&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api"
+          data-return-url="/games/">
+          ▶️ PLAY FREE</button>
+        </div>
+      </article>
+
+    <article data-type="Pragmatic" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+      <img src="../assets/images/The-Dog-House-Dog-or-Alive.png" alt="The Dog House Dog or Alive" class="w-full h-48 object-cover">
+      <div class="p-6 space-y-2">
+        <h2 class="text-lg font-semibold">The Dog House or Alive</h2>
+        <p class="text-xs text-teal-400">PRAGMATIC PLAY</p>
+        <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+       
+        data-game-title="The Dog House or Alive"
+        data-src="https://demogamesfree.tvedlttuya.net/gs2c/openGame.do?gameSymbol=vs20doghouse2&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
 
     <article data-type="Pragmatic" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
-      <img src="../assets/images/Zeus-vs-Hades.png" alt="Zevs Vs Hades" class="w-full h-48 object-cover">
+      <img src="../assets/images/the-power-of-thor-megaways.png" alt="Power Of Thor Megaways" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
-        <h2 class="text-lg font-semibold">Zevs Vs Hades</h2>
+        <h2 class="text-lg font-semibold">Power Of Thor Megaways</h2>
         <p class="text-xs text-teal-400">PRAGMATIC PLAY</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+        <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="Power Of Thor Megaways"
+        data-src="https://demogamesfree.tvedlttuya.net/gs2c/openGame.do?gameSymbol=vswayshammthor&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
 
     <article data-type="Pragmatic" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
-      <img src="../assets/images/Sweet-Banana-1000.png" alt="Sweet Bonnanza 1000" class="w-full h-48 object-cover">
+      <img src="../assets/images/sky-bounty.png" alt="Sky Bounty" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
-        <h2 class="text-lg font-semibold">Sweet Bonnanza</h2>
+        <h2 class="text-lg font-semibold">Sky Bounty</h2>
         <p class="text-xs text-teal-400">PRAGMATIC PLAY</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+        <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="Sky Bounty"
+        data-src="https://demogamesfree.tvedlttuya.net/gs2c/openGame.do?gameSymbol=vs50jucier&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
+
     <article data-type="Pragmatic" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
-      <img src="../assets/images/Starlight-Princess-1000.png" alt="Starlight Princess 1000" class="w-full h-48 object-cover">
+      <img src="../assets/images/wolf-gold.png" alt="Wolf Gold" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
-        <h2 class="text-lg font-semibold">Starlight Princess 1000</h2>
+        <h2 class="text-lg font-semibold">Wolf Gold</h2>
         <p class="text-xs text-teal-400">PRAGMATIC PLAY</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+        <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="Wolf Gold"
+        data-src="https://demogamesfree.tvedlttuya.net/gs2c/openGame.do?gameSymbol=vs25wolfgold&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
+    
     <article data-type="Pragmatic" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
-      <img src="../assets/images/wild-west-gold.jpeg" alt="Wild West Gold" class="w-full h-48 object-cover">
+      <img src="../assets/images/zombie-carnival.png" alt="Zombie Carnival" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
-        <h2 class="text-lg font-semibold">Wild West Gold</h2>
+        <h2 class="text-lg font-semibold">Zombie Carnival</h2>
         <p class="text-xs text-teal-400">PRAGMATIC PLAY</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+        <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="Zombie Carnival"
+        data-src="https://demogamesfree.tvedlttuya.net/gs2c/openGame.do?gameSymbol=vswayszombcarn&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
+
+    <article data-type="Nolimit" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+      <img src="../assets/images/runsty-and-curly.png" alt="Rusty & Curly" class="w-full h-48 object-cover">
+      <div class="p-6 space-y-2">
+        <h2 class="text-lg font-semibold">Rusty & Curly</h2>
+        <p class="text-xs text-teal-400">PRAGMATIC PLAY</p>
+        <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
+        <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="Rusty & Curly"
+        data-src="https://d3le5997hik6o.cloudfront.net/1404/1.18.4/index.html?language=en&channel=desktop&gameid=1404&mode=2&token=demo&lobbyurl=http%253A%252F%252Fgamdom.com%2Fcasino&currency=USD&partner=gamdom_prod&env=https://d3le5997hik6o.cloudfront.net/demo/api&realmoneyenv=https://d3le5997hik6o.cloudfront.net/api&alwaysredirect=true"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+      </div>
+    </article>
+
+    <article data-type="Nolimit" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+      <img src="../assets/images/The-Bowery-Boys.png" alt="The Bowery Boys" class="w-full h-48 object-cover">
+      <div class="p-6 space-y-2">
+        <h2 class="text-lg font-semibold">The Bowery Boys</h2>
+        <p class="text-xs text-teal-400">NOLIMIT CITY</p>
+        <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="The Bowery Boys"
+        data-src="https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1135&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+      </div>
+    </article>
+    
     <article data-type="Nolimit" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/The-Crypt.png" alt="The Crypt" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">The Crypt</h2>
         <p class="text-xs text-teal-400">NOLIMIT CITY</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+ 
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="The Crypt"
+        data-src="https://casino.nolimitcdn.com/loader/evo.html?device=desktop&game=TheCrypt&language=en-GB&operator=HUB88GMDM0000001&clock=false&hideExitButton=true&showHomeButton=false&playMode=demo&depositEvent=true&lobbyEvent=true&currencyCode=EUR&currencySymbol=%E2%82%AC&extra=%7B%22licenseePlayerId%22%3A%22qs7hbomgxeaiyy4n%22%2C%22currency%22%3A%22EUR%22%2C%22evo_token%22%3A%22eyJraWQiOiIxNzM5NDQ4NDAxOTYwIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJjdXIiOiJFVVIiLCJndHAiOiJ0aGVjcnlwdCIsImp1ciI6IkNXIiwiaGllcmFyY2h5IjoiW2h1Yjg4Z21kbTAwMDAwMDFdIiwibWlkIjoiVGhlQ3J5cHQiLCJlcGlkIjoicGxheWluZ2d1ZXN0MDAxNiIsInBpZCI6InFzN2hib21neGVhaXl5NG4iLCJleHAiOjE3NTU0MzI1NzcsInRpZCI6InRoZWNyeXB0MDAwMDAwMDAiLCJjaWQiOiJodWI4OGdtZG0wMDAwMDAxIiwic2lkIjoicXM3aGJvbWd4ZWFpeXk0bnRjdWh5cnN0aDNudGhwNTIwMDAxMWZiMiJ9.JlsctfJyUKj3huC1kR5A2k6VeFbNv9GgmF_vOl6-Dq67Tn-As-2bfWj6AdYf6O0gPX1xG1NxwC6hjoOjw_GurQ%22%2C%22table_id%22%3A%22thecrypt00000000%22%2C%22table_name%22%3A%22The%20Crypt%22%2C%22screenName%22%3A%22Guest%22%2C%22externalPlayerId%22%3A%22playingguest0016%22%7D&serverHost=https%3A%2F%2Fcasino.nolimitcity.com"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+     
       </div>
     </article>
+
     <article data-type="Nolimit" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Book-Of-Shadows.png" alt="Book Of Shadows" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">Book Of Shadows</h2>
         <p class="text-xs text-teal-400">NOLIMIT CITY</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="Book Of Shadows"
+        data-src="https://tauxrzs8.99ncrh1n.com/frontend/evo/r2/#demo=direct&provider=nlc&balance_id=demo-hub88gmdm0000001-cGxheWluZ2d1ZXN0MDA1NA%253D%253D-835d7d11-fa52-452a-96f2-365f92ff3841&ua_launch_id=185b9f6944e5e11942a3d39e&game=bookofshadows&table_id=bookofshadows000&app=promotions"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
+
     <article data-type="Nolimit" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Duck-Hunter.png" alt="Duck Hunter" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">Duck Hunter</h2>
         <p class="text-xs text-teal-400">NOLIMIT CITY</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+       
+        data-game-title="Duck Hunter"
+        data-src="https://tauxrzs8.99ncrh1n.com/frontend/evo/r2/#demo=direct&provider=nlc&balance_id=demo-hub88gmdm0000001-cGxheWluZ2d1ZXN0MDA2MA%253D%253D-c90fc92e-01ae-4eb4-bd5b-c0c923f2bed5&ua_launch_id=185b9f73979b2cb422cfa1e6&game=duckhunters&table_id=duckhunters00000&app=promotions"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
-    <article data-type="Evolution" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
+
+
+    
+    <!-- <article data-type="Evolution" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Blackjack-first-person.png" alt="First Person Blackjack" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">First Person Blackjack</h2>
         <p class="text-xs text-teal-400">EVOLUTION GAMING</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="First Person Blackjack"
+        data-src="https://launcher-eu1.fh8labs.com/games/error_page?message=Fun+mode+not+supported+by+Evolution+supplier&request_id=GFnPO3HIQuDctZUJqc0F"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+
       </div>
     </article>
+
+
     <article data-type="Evolution" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Monopoly-Live.png" alt="Monopoly Live" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">Monopoly Live</h2>
         <p class="text-xs text-teal-400">EVOLUTION GAMING</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+       
+        data-game-title="Monopoly Live"
+        data-src="https://tauxrzs8.99ncrh1n.com/frontend/evo/r2/#provider=evolution&ua_launch_id=1859cf80f6efe0604a7d69cc&table_id=Monopoly00000001&game=monopoly"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+      
       </div>
     </article>
+
+    
     <article data-type="Evolution" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Crazy-Time.png" alt="Crazy Time" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">Crazy Time</h2>
         <p class="text-xs text-teal-400">EVOLUTION GAMING</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+       
+        data-game-title="Crazy Time"
+        data-src="https://tauxrzs8.99ncrh1n.com/frontend/evo/r2/#provider=evolution&ua_launch_id=1859d039c9b39a9089036182&table_id=CrazyTime0000001&app=promotions&game=crazytime&free_games=direct"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+     
       </div>
-    </article>
+    </article> -->
+
+
     <article data-type="Peternsons" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Barbarossa-Revenge.png" alt="Barbarossa Revenge" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">Barbarossa Revenge</h2>
         <p class="text-xs text-teal-400">PETER AND SONS</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+ 
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="Barbarossa Revenge"
+        data-src="https://cdn-demo.spinart.cloud/peterandsons/launcher/index.html?server=https%3A%2F%2Fdemo.spinart.cloud&wallet=demo&operator=demo&gameCode=barbarossa-revenge&key=1298462635841&language=en"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
+      
       </div>
     </article>
+
     <article data-type="Peternsons" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Greedy-Alice.png" alt="Greedy Alice" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">Greedy Alice</h2>
         <p class="text-xs text-teal-400">PETER AND SONS</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        
+        data-game-title="Greedy Alice"
+        data-src="https://cdn-demo.spinart.cloud/peterandsons/launcher/index.html?server=https%3A%2F%2Fdemo.spinart.cloud&wallet=demo&operator=demo&gameCode=greedy-alice&key=1742426975596&language=en"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
+
     <article data-type="Peternsons" class="glass-card rounded-2xl overflow-hidden hover:shadow-pink-500/30 transition hover:scale-105">
       <img src="../assets/images/Ghost-Father.png" alt="Ghost Father" class="w-full h-48 object-cover">
       <div class="p-6 space-y-2">
         <h2 class="text-lg font-semibold">Ghost Father</h2>
         <p class="text-xs text-teal-400">PETER AND SONS</p>
         <p class="text-gray-400 text-sm">Dive into candy-filled reels & multipliers!</p>
-        <a href="javascript:void(0)" class="inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition">▶️ PLAY FREE</a>
+    
+      <button type="button"
+        class="play-demo-btn inline-block bg-gradient-to-r from-pink-500 to-teal-400 text-white text-xs px-4 py-2 rounded-full shadow hover:scale-105 transition"
+        data-game-title="Ghost Father"
+        data-src="https://cdn-demo.spinart.cloud/peterandsons/launcher/index.html?server=https%3A%2F%2Fdemo.spinart.cloud&wallet=demo&operator=demo&gameCode=ghostfather&key=929109926473&language=en"
+        data-return-url="/games/">
+        ▶️ PLAY FREE</button>
       </div>
     </article>
 
@@ -425,16 +538,17 @@
 
 <h2 id="gameTitle" class="text-xl font-bold text-white text-center my-2"></h2>
 <!-- Register Gate Modal -->
-<!-- Backdrop -->
 <div id="registerGateBackdrop" class="fixed inset-0 bg-black bg-opacity-70 hidden z-40"></div>
 
 <!-- Modal -->
 <div id="registerGateModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
-  <div class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
+  <div class="bg-gray-900 p-6 rounded-lg text-center max-w-md w-full">
     <h3 class="text-lg font-bold mb-4 text-center">Register to Play</h3>
-    <p class="mb-4 text-center text-sm text-gray-700">You need to register to access full games. Click below to continue.</p>
-    <button id="confirmRegister" class="w-full bg-gradient-to-r from-pink-500 to-teal-400 text-white py-2 px-4 rounded-full hover:scale-105 transition">Register Now</button>
-    <button id="closeRegisterModal" class="mt-4 text-sm text-gray-500 w-full">Cancel</button>
+    <p class="mb-4 text-center text-sm">You need to register to access full games. Click below to continue.</p>
+     <div class="flex justify-center gap-4">
+      <button id="confirmRegister" class="bg-gradient-to-r from-pink-500 to-teal-400 text-white px-3 py-1 rounded-full text-xs font-semibold shadow hover:scale-105 transition">Register Now</button>
+    <button id="closeRegisterModal" class="border border-pink-500/40 text-xs px-3 py-1 rounded-full hover:scale-105 transition">Cancel</button>
+    </div>
   </div>
 </div>
 

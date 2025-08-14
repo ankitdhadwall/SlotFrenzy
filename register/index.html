@@ -26,6 +26,10 @@
   <div class="absolute inset-0 bg-black/70"></div>
 
   <div class="relative z-10 w-full max-w-md mx-auto px-4">
+    <!-- Close button - always on top -->
+  <a href="/" class="fixed top-4 right-4 text-red-500 hover:text-red-400 text-3xl z-50">
+    <i class="fas fa-times"></i>
+  </a>
     <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-pink-500/20 animate-glow flex flex-col items-center">
       <a href="/" class="mb-4">
         <img src="../assets/images/slotfrenzy-logo.png" alt="SlotFrenzy Logo" class="w-[95px] h-[75px] animate-pulse">
@@ -75,7 +79,8 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('registerForm');
-  
+  if (!form) return;
+
   form.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -98,41 +103,25 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Save to localStorage
     localStorage.setItem('username', username);
     localStorage.setItem('email', email);
-    localStorage.setItem('coins', '5000'); // default coins
-    localStorage.setItem('demoCount', '0');
-    // ⚠️ Note: don't store password in localStorage in production
+    localStorage.setItem('password', password);
+    localStorage.setItem('coins', '5000');
+    localStorage.setItem('demoPlayCount', '0');
+    localStorage.setItem('isRegistered', 'true');
 
-    // Redirect to home page
-    window.location.href = '/';
-  });
-});
-</script>
+    const params = new URLSearchParams(window.location.search);
+    const gameTitle = params.get('title');
+    const gameSrc = params.get('src');
+    const backUrl = params.get('back') || '/games/';
 
-<script>
-  // Wait for registration to complete (you can wrap this inside your form submission callback)
-  document.addEventListener('DOMContentLoaded', function () {
-    // Example: Replace this with your actual "registration complete" trigger
-    const registerButton = document.getElementById('completeRegistration');
-
-    if (registerButton) {
-      registerButton.addEventListener('click', function () {
-        // Retrieve game params from query string
-        const params = new URLSearchParams(window.location.search);
-        const gameUrl = params.get('src');
-        const gameTitle = params.get('title');
-        const backUrl = params.get('back');
-
-        // Mark user as registered
-        localStorage.setItem('isRegistered', 'true');
-
-        // Redirect back to the game page
-        window.location.href = `/games/game/index.html?title=${encodeURIComponent(gameTitle)}&src=${encodeURIComponent(gameUrl)}&back=${encodeURIComponent(backUrl)}`;
-      });
+    if (gameTitle && gameSrc) {
+      window.location.href = `/games/game/index.html?title=${encodeURIComponent(gameTitle)}&src=${encodeURIComponent(gameSrc)}&back=${encodeURIComponent(backUrl)}`;
+    } else {
+      window.location.href = '/games/';
     }
   });
+});
 </script>
 
 <script>
